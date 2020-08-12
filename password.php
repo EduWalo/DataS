@@ -11,7 +11,7 @@ if($_POST){
         // echo var_dump($_POST);
     }else { 
         $correo = $_POST["correo"];
-        $sql = "SELECT id, nameuser, password FROM user WHERE mail='$correo'";
+        $sql = "SELECT * FROM client WHERE mail='$correo'";
         // execute query
         $resultado = $mysqli->query($sql);
         // number of rows
@@ -21,8 +21,8 @@ if($_POST){
         if($num>0){//User exist
             $row = $resultado->fetch_assoc();
             //db password
-            $password_bd = $row['password'];
-            $username_r = $row['nameuser'];
+            $password_bd = $row['passwrd'];
+            $username_r = $row['username'];
             
             
             $mailer =  new MailerW();

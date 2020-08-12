@@ -12,8 +12,8 @@
         $usuario = $_POST['user'];
         $password = $_POST['password'];
         // query
-        $sql = "SELECT id, nameuser, password, mail, type_user FROM user WHERE nameuser='$usuario'";;
-        // echo $sql;
+        // $sql = "SELECT id, username, passwrd, mail, type_user FROM client WHERE username='$usuario'";;
+        $sql = "SELECT * FROM client WHERE username='$usuario'";;
         // execute query
         $resultado = $mysqli->query($sql);
         // number of rows
@@ -25,17 +25,14 @@
             //copy the result
             $row = $resultado->fetch_assoc();
             //db password
-            $password_bd = $row['password'];
-            // get password
-            // $pass_c = sha1($password);//to sha1
-            $pass_c = $password;//to sha1  
+            $password_bd = $row['passwrd'];
             
-            if($password_bd == $pass_c){
+            if($password_bd == $password){
 
                 // session
-                $_SESSION['id']= $row['id'];
+                $_SESSION['id']= $row['id_student'];
                 $_SESSION['mail']= $row['mail'];
-                $_SESSION['nameuser']= $row['nameuser'];
+                $_SESSION['username']= $row['username'];
                 $_SESSION['type_user']= $row['type_user'];
 
                 // session init
@@ -116,12 +113,7 @@
                                                 '</div>';
                                             }
                                             ?>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                                    <label class="custom-control-label" for="rememberPasswordCheck">Recordarme</label>
-                                                </div>
-                                            </div>
+                                            
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="password.php">¿Olvido su contraseña?</a>
                                                 <!-- <a class="btn btn-primary"href="index.html">Ingresar</a> -->

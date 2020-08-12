@@ -20,23 +20,22 @@ if($_POST){
             $email = $_POST['email'];
             $password = $_POST['password'];
             // query probe
-            $sqluser = "SELECT id FROM user WHERE nameuser='$usuario'";
-            $sqlemail = "SELECT id FROM user WHERE mail='$email'";
+            $sqluser = "SELECT * FROM client WHERE username='$usuario'";
+            $sqlemail = "SELECT * FROM client WHERE mail='$email'";
             
             // execute query to prevent variuis same users
             $num_user = ($mysqli->query($sqluser))->num_rows;
             $num_email = ($mysqli->query($sqlemail))->num_rows;
     
             if($num_user>0){
-                $error = 2;//user
+                $error = 2;//user error,yet exist
             }else if($num_email>0){
-                $error = 3;//mail
+                $error = 3;//mail error, yet exist
             }else  {
-                //  cifrate passwors
-                $password_c = $password;
+                
                 //el usuario no ha sido registrado
-                $sql = "INSERT INTO user (nameuser, password, mail, type_user)
-                        VALUES ('$usuario', '$password_c', '$email', 0)";
+                $sql = "INSERT INTO client (username, passwrd, mail, type_user)
+                        VALUES ('$usuario', '$password', '$email', 0)";
                 if($mysqli->query($sql)){
                     echo '<div class="alertB success">',
                     "<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",

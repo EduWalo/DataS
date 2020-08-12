@@ -15,7 +15,7 @@ class MVController{
 			}else {
 				$contenido = "404.php";    
 			}
-			// echo $linkeded  ;//load actionC
+			
         }else {
             $contenido = "models/inicio.php";    
         }

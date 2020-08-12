@@ -26,8 +26,7 @@ class MailerW
 			$mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 			//Recipients
-			$mail->setFrom('manejodedatos2020@gmail.com', 'ADMIN 
-			Recuperación de contraseña');
+			$mail->setFrom('manejodedatos2020@gmail.com', 'ADMIN DATAS');
 			$mail->addAddress($correo);     // Add a recipient
 			
 

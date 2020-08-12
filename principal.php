@@ -5,17 +5,11 @@
     if(!isset($_SESSION['id'])){
         header("Location: 404.php");
     }
-    $nombre = $_SESSION['nameuser'];
+    
+    $nombre = $_SESSION['username'];
     $type_user = $_SESSION['type_user'];
 
     $getor_de_contenido= new MVController();
-
-    if($_POST){
-        // var_dump($_POST);
-        // echo "<div></div>";
-        // var_dump($_POST);
-    }
-
 
     
 ?>
@@ -60,16 +54,11 @@
                         <i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <!--user options-->
-                        <a class="dropdown-item" href="#">Configuración</a>
-                        
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="logout.php">Salir</a>
                     </div>
                 </li>
             </ul>
         </nav>
-
-
 
 
 
@@ -104,8 +93,9 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="principal.php?action=gen">General</a>
                                     <a class="nav-link" href="principal.php?action=frmls">Estilos de aprendizaje</a>
-                                    <a class="nav-link" href="principal.php?action=frmpt">Tipos de jugador</a>
+                                    <a class="nav-link" href="principal.php?action=frmtp">Tipos de jugador</a>
                                 </nav>
                             </div>
 
