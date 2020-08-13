@@ -120,18 +120,14 @@
 
 
             
-            <div id="layoutSidenav_content">
+            <div id="layoutSidenav_content" >
                 <!-- contenido -->
 
                 <main>
                     <div class="container-fluid">
                         
                         <?php
-                            // if(isset($_GET["action"])){
-
-                            // }else {
-                            //     $getor_de_contenido->enrutar();
-                            // }
+                        //gestor de contenido 
                             $getor_de_contenido->enrutar();
                         ?>
                     </div>

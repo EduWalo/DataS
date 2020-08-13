@@ -37,6 +37,7 @@
 
                 // session init
                 header("Location: principal.php");
+                
             }else {
                 $error=2;
             }

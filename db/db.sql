@@ -13,11 +13,18 @@ CREATE TABLE quiz_general
     genero VARCHAR(10),
     grado VARCHAR(10),
     r_edad VARCHAR(10),
-    social VARCHAR(20),
     PRIMARY KEY (id_student),
     FOREIGN KEY (id_student) REFERENCES client(id_student)
 
-)
+);
+
+CREATE TABLE plataform_rate
+(
+    id_student INT NOT NULL,
+    plataform VARCHAR(20) NOT NULL,
+    PRIMARY KEY (id_student,plataform),
+    FOREIGN KEY (id_student) REFERENCES client(id_student)
+);
 
 CREATE TABLE quiz_learn_styles
 (
@@ -69,7 +76,7 @@ CREATE TABLE quiz_learn_styles
 
     PRIMARY KEY (id_student),
     FOREIGN KEY (id_student) REFERENCES client(id_student)
-)
+);
 
 CREATE TABLE quiz_learn_styles_rs
 (
@@ -118,7 +125,7 @@ CREATE TABLE quiz_type_players
     PRIMARY KEY (id_student),
     FOREIGN KEY (id_student) REFERENCES client(id_student)
 
-)
+);
 
 CREATE TABLE quiz_type_players_rs
 (
@@ -133,4 +140,4 @@ CREATE TABLE quiz_type_players_rs
 
     PRIMARY KEY (id_student),
     FOREIGN KEY (id_student) REFERENCES client(id_student)
-)
+);

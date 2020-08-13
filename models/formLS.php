@@ -5,7 +5,7 @@
 	$fg = new FormGenerator();
 
 	// consult the existence or results
-	$sql = "SELECT * FROM student_result WHERE id_student =".$_SESSION["id"];
+	$sql = "SELECT * FROM quiz_learn_styles_rs WHERE id_student =".$_SESSION["id"];
 	// echo $_SESSION["id"];
 	$resultado = $mysqli->query($sql);
 	$num = $resultado->num_rows;//extract the number of rows

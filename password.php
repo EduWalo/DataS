@@ -38,7 +38,9 @@ if($_POST){
                 "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
                 ' '.$retorno["message"],
                 '</div>';
+                header("Location: index.php");
             }
+            
             
         }else {//error de usuario no existente
             $error = true;

@@ -12,7 +12,12 @@ class MVController{
 				$contenido = "models/inicio.php";    
 			}else if($linkeded=="frmls"){
 				$contenido = "models/formLS.php";    
-			}else {
+			}else if($linkeded=="frmtp"){
+				$contenido = "models/formTP.php";    
+			}else if($linkeded=="gen"){
+				$contenido = "models/formGen.php";    
+			}
+			else {
 				$contenido = "404.php";    
 			}
 			
