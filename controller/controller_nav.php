@@ -16,9 +16,15 @@ class MVController{
 				$contenido = "models/formTP.php";    
 			}else if($linkeded=="gen"){
 				$contenido = "models/formGen.php";    
+			}else if($linkeded=="graphics"){
+				$contenido = "models/graphics.php";
 			}
 			else {
-				$contenido = "404.php";    
+				echo "
+				<script type=\"text/javascript\">
+					window.location.href = \"404.php\";
+				</script>
+				";
 			}
 			
         }else {
@@ -102,6 +108,41 @@ class FormGenerator
 		//show question
 
 		echo $code;
+	}
+	
+	public function generateSelect($pregunta,$numero){
+		$opciones = array(
+			"Totalmente de a cuerdo",
+			"De a cuerdo",
+			"Un poco de acuerdo",
+			"No tengo opinion al respecto",
+			"Un poco en desacuerdo",
+			"En desacuerdo",
+			"Totalmente en desacuerdo"
+		);
+		echo
+		"
+			<div class=\"card-header\">
+				<label>".$pregunta."</label>
+			</div>
+			<div class=\"card-body\" >
+				<select class=\"form-control col-lg-4\" name=\"p".$numero."\">
+		";
+		for ($i=0; $i < 7; $i++) { 
+			echo "				<option value=\"".($i+1)."\"";
+			if(isset($_POST["p".$numero]) && $_POST["p".$numero] == ($i+1)){
+				echo "selected";
+			}
+			echo ">".$opciones[$i]."</option>";
+		}
+		echo
+		"
+				</select>
+			</div>
+		";
+
+
+
 	}
 }
 

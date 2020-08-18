@@ -8,7 +8,11 @@
     $num = $resultado->num_rows;# count rows
     if($num>0){
         $showForm=false;
-		include "models/graphics.php";
+		echo "
+		<script type=\"text/javascript\">
+			window.location.href = \"principal.php?action=graphics\";
+		</script>
+		";
     }else {
         $showForm=true; 
         if($_POST){
@@ -236,7 +240,7 @@
             <!-- GRADO -->
             <div class="card mb-2">
                 <div class="card-header">
-                    <h5 class="card-title">Grado cursado actualemente</h5>
+                    <h5 class="card-title">Grado cursado actualmente</h5>
                 </div>
                 <div class="card-body" ">
 

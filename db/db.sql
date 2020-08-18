@@ -131,12 +131,12 @@ CREATE TABLE quiz_type_players_rs
 (
     id_student INT NOT NULL,
     
-    philanthropist INT(6) NOT NULL, 
-    socialiser INT(6) NOT NULL,
-    free_spirit INT(6) NOT NULL,
-    achiever INT(6) NOT NULL,
-    player INT(6) NOT NULL, 
-    disruptor INT(6) NOT NULL,
+    philanthrop DECIMAL(12,8) NOT NULL, 
+    socialiser DECIMAL(12,8) NOT NULL,
+    free_spirit DECIMAL(12,8) NOT NULL,
+    achiever DECIMAL(12,8) NOT NULL,
+    player DECIMAL(12,8) NOT NULL, 
+    disruptor DECIMAL(12,8) NOT NULL,
 
     PRIMARY KEY (id_student),
     FOREIGN KEY (id_student) REFERENCES client(id_student)

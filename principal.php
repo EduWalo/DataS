@@ -25,6 +25,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Data student</title>
+        <link rel="icon" href="models/img/fab.ico" />
         <link href="css/personalStyles.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -82,7 +83,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Informes
                             </a>
-                            
+
+                            <a class="nav-link" href="principal.php?action=graphics">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Resultados
+                            </a>
 
                             <div class="sb-sidenav-menu-heading">DATOS</div><!-- titulo divisor-->
                             

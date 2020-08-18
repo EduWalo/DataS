@@ -64,6 +64,7 @@ if($_POST){
         <title>Data student - Recovery</title>
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/personalStyles.css" rel="stylesheet" />
+        <link rel="icon" href="models/img/fab.ico" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.
         js" crossorigin="anonymous"></script>
         

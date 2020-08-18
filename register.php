@@ -1,69 +1,67 @@
 <?php
-$error =0;
-// import connection 
-require "controller/connection.php";
+    $error =0;
+    // import connection 
+    require "controller/connection.php";
 
 
-if($_POST){
-    //post validate
-    $post = (isset($_POST['user']) && !empty($_POST['user'])) &&
-    (isset($_POST['email']) && !empty($_POST['email'])) &&
-    (isset($_POST['password']) && !empty($_POST['password'])) &&
-    (isset($_POST['password_conf']) && !empty($_POST['password_conf']));
+    if($_POST){
+        //post validate
+        $post = (isset($_POST['user']) && !empty($_POST['user'])) &&
+        (isset($_POST['email']) && !empty($_POST['email'])) &&
+        (isset($_POST['password']) && !empty($_POST['password'])) &&
+        (isset($_POST['password_conf']) && !empty($_POST['password_conf']));
 
-    if($post){
+        if($post){
 
-        if($_POST['password_conf'] == $_POST['password']){
-    
-            // load data of form 
-            $usuario = $_POST['user'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            // query probe
-            $sqluser = "SELECT * FROM client WHERE username='$usuario'";
-            $sqlemail = "SELECT * FROM client WHERE mail='$email'";
-            
-            // execute query to prevent variuis same users
-            $num_user = ($mysqli->query($sqluser))->num_rows;
-            $num_email = ($mysqli->query($sqlemail))->num_rows;
-    
-            if($num_user>0){
-                $error = 2;//user error,yet exist
-            }else if($num_email>0){
-                $error = 3;//mail error, yet exist
-            }else  {
+            if($_POST['password_conf'] == $_POST['password']){
+        
+                // load data of form 
+                $usuario = $_POST['user'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                // query probe
+                $sqluser = "SELECT * FROM client WHERE username='$usuario'";
+                $sqlemail = "SELECT * FROM client WHERE mail='$email'";
                 
-                //el usuario no ha sido registrado
-                $sql = "INSERT INTO client (username, passwrd, mail, type_user)
-                        VALUES ('$usuario', '$password', '$email', 0)";
-                if($mysqli->query($sql)){
-                    echo '<div class="alertB success">',
-                    "<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
-                    '<strong>¡Exito!</strong> se ha registrado con exito',
-                    '</div>';
-                    header("Location: index.php");
-                }else {
-                    echo '<div class="alertB">',
-                    "<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
-                    '<strong>¡Cuidado!</strong> error con el server<br>', $sql ,$mysqli->error,
-                    '</div>';    
+                // execute query to prevent variuis same users
+                $num_user = ($mysqli->query($sqluser))->num_rows;
+                $num_email = ($mysqli->query($sqlemail))->num_rows;
+        
+                if($num_user>0){
+                    $error = 2;//user error,yet exist
+                }else if($num_email>0){
+                    $error = 3;//mail error, yet exist
+                }else  {
+                    
+                    //el usuario no ha sido registrado
+                    $sql = "INSERT INTO client (username, passwrd, mail, type_user)
+                            VALUES ('$usuario', '$password', '$email', 0)";
+                    if($mysqli->query($sql)){
+                        echo '<div class="alertB success">',
+                        "<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
+                        '<strong>¡Exito!</strong> se ha registrado con exito',
+                        '</div>';
+                        header("Location: index.php");
+                    }else {
+                        echo '<div class="alertB">',
+                        "<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
+                        '<strong>¡Cuidado!</strong> error con el server<br>', $sql ,$mysqli->error,
+                        '</div>';    
+                    }
+                    
                 }
-                
+            }else {
+                $error=1;
             }
         }else {
-            $error=1;
+            echo '<div class="alertB">',
+            "<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
+            '<strong>¡Cuidado!</strong> Verifique que los campos no estén vacios',
+            '</div>';
         }
-    }else {
-        echo '<div class="alertB">',
-        "<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
-        '<strong>¡Cuidado!</strong> Verifique que los campos no estén vacios',
-        '</div>';
+        
+        
     }
-    
-    
-}
-
-
 
 ?>
 
@@ -76,6 +74,7 @@ if($_POST){
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Register Data Student</title>
+        <link rel="icon" href="models/img/fab.ico" />
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/personalStyles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>

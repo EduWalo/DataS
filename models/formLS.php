@@ -13,7 +13,11 @@
 	if($num >0){//probar si hay resultados de encuestas previas 
 		// mostrar resultados
 		$showForm=false;
-		include "models/lsgraphics.php";
+		echo "
+		<script type=\"text/javascript\">
+			window.location.href = \"principal.php?action=graphics\";
+		</script>
+		";
 		
 		
 	}else {// si no dejar presentar la encuesta
@@ -22,135 +26,110 @@
 		if($_POST){
 			//  var_dump($_POST);
 			//serch the first fields 
-			if(
-				isset($_POST["pgenero"]) &&
-				isset($_POST["grado"]) &&
-				isset($_POST["edad"]) 
-			){
-				//test each question
-				$revisarP = true;
+			
+			//test each question
+			$revisarP = true;
+			for ($i=1; $i <= 44; $i++) { 
+				if(!(isset($_POST["pregunta".$i]))){
+					$revisarP = false;
+					break;
+				}
+			}
+
+			//probe the error 
+			if($revisarP){ //all questions send success
+
+				//guardar preguntas 
+				//build sql and results
+				
+				$resultA= array(0,0,0,0);
+				$resultB= array(0,0,0,0);
+
+				
+
+				//sql's
+				$sqlT ="INSERT INTO quiz_learn_styles ( id_student";
+				$sqlB ="VALUE (".$_SESSION["id"];
+				
+
 				for ($i=1; $i <= 44; $i++) { 
-					if(!(isset($_POST["pregunta".$i]))){
-						$revisarP = false;
-						break;
+					$sqlT = $sqlT.", p".$i;
+					$sqlB = $sqlB.","."'".$_POST["pregunta".$i]."'";
+
+					if($_POST["pregunta".$i] === 'A'){
+						$resultA[(($i+3)%4)]++;
+					}else {
+						$resultB[(($i+3)%4)]++;
 					}
 				}
+				// append sql
+				$sql2 = $sqlT.") ".$sqlB.") ";
 
-				//probe the error 
-				if($revisarP){ //all questions send success
-					//guardar valores 
-					//personal data
-					$sql = "INSERT INTO 
-					personal_data (id_student, genero, grado, range_edad)
-					VALUES ("
-					."'".$_SESSION['id']."'".","
-					."'".$_POST['pgenero']."'".","
-					."'".$_POST['grado']."'".","
-					."'".$_POST['edad']."'"
-					.")";
+				//processs the data 
 
-					//guardar preguntas 
-					//build sql and results
-					
-					$resultA= array(0,0,0,0);
-					$resultB= array(0,0,0,0);
-
-					
-
-					//sql's
-					$sqlT ="INSERT INTO student_answer ( id_student";
-					$sqlB ="VALUE (".$_SESSION["id"];
-					
-
-					for ($i=1; $i <= 44; $i++) { 
-						$sqlT = $sqlT.", p".$i;
-						$sqlB = $sqlB.","."'".$_POST["pregunta".$i]."'";
-
-						if($_POST["pregunta".$i] === 'A'){
-							$resultA[(($i+3)%4)]++;
-						}else {
-							$resultB[(($i+3)%4)]++;
-						}
-					}
-					// append sql
-					$sql2 = $sqlT.") ".$sqlB.") ";
-
-					//processs the data 
-
-					//process
-					if($resultA[0] >$resultB[0]){
-						$process = 'ACT';
-					}else {
-						$process = 'REF';
-					}
-					$process_value = abs($resultA[0] - $resultB[0]);
-
-					//Perception
-					if($resultA[1] >$resultB[1]){
-						$perception = 'SENS';
-					}else {
-						$perception = 'INT';
-					}
-					$perception_value = abs( $resultA[1] - $resultB[1] );
-
-					//flume
-					if($resultA[2] >$resultB[2]){
-						$channel = 'VIS';
-					}else {
-						$channel = 'VERB';
-					}
-					$channel_value = abs($resultA[2] - $resultB[2]);
-
-					//understand
-					if($resultA[3] >$resultB[3]){
-						$understand = 'SEC';
-					}else {
-						$understand = 'GLOB';
-					}
-					$understand_value = abs($resultA[3] - $resultB[3]);
-
-					$sql3 = "INSERT INTO `student_result` 
-					(`id_student`, 
-					`process`, `process_value`, 
-					`perception`, `perception_value`, 
-					`channel`, `channel_value`, 
-					`understand`, `understand_value`) 
-					VALUES (".$_SESSION["id"].","
-					."'".$process."'".",".$process_value.","
-					."'".$perception."'".",".$perception_value.","
-					."'".$channel."'".",".$channel_value.","
-					."'".$understand."'".",".$understand_value.")";
-
-					//execute fields 
-					if($mysqli->query($sql) &&
-					$mysqli->query($sql2) &&
-					$mysqli->query($sql3)
-					){
-						echo '<div class="alertB success">',
-						"<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
-						'<strong>¡Exito!</strong> guardado los datos con exito',
-						'</div>';
-						
-					}else {
-						echo '<div class="alertB">',
-						"<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
-						'<strong>¡Cuidado!</strong> error con el server<br>', $sql, $sql2, $sql3 ,$mysqli->error,
-						'</div>';    
-					}
-				}else{// error un question
-					echo
-					'<div class="alertB ">',
-					"<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
-					'HACE FALTA LA PREGUNTA '.$i,
-					'</div>';	
+				//process
+				if($resultA[0] >$resultB[0]){
+					$process = 'ACT';
+				}else {
+					$process = 'REF';
 				}
+				$process_value = abs($resultA[0] - $resultB[0]);
 
-			}else {//error in first fields
-				echo 
+				//Perception
+				if($resultA[1] >$resultB[1]){
+					$perception = 'SENS';
+				}else {
+					$perception = 'INT';
+				}
+				$perception_value = abs( $resultA[1] - $resultB[1] );
+
+				//flume
+				if($resultA[2] >$resultB[2]){
+					$channel = 'VIS';
+				}else {
+					$channel = 'VERB';
+				}
+				$channel_value = abs($resultA[2] - $resultB[2]);
+
+				//understand
+				if($resultA[3] >$resultB[3]){
+					$understand = 'SEC';
+				}else {
+					$understand = 'GLOB';
+				}
+				$understand_value = abs($resultA[3] - $resultB[3]);
+
+				$sql3 = "INSERT INTO `quiz_learn_styles_rs` 
+				VALUES (".$_SESSION["id"].","
+				."'".$perception."'".",".$perception_value.","
+				."'".$channel."'".",".$channel_value.","
+				."'".$process."'".",".$process_value.","
+				."'".$understand."'".",".$understand_value.")";
+
+				//execute fields 
+				if(
+				$mysqli->query($sql2) &&
+				$mysqli->query($sql3)
+				){
+					//redirect to init
+					echo "
+                        <script type=\"text/javascript\">
+                            window.location.href = \"principal.php?action=inicio\";
+                        </script>
+                        ";
+					
+				}else {
+					echo '<div class="alertB">',
+					"<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
+					'<strong>¡Cuidado!</strong> error con el server<br>', $sql2, $sql3 ,$mysqli->error,
+					'</div>';    
+				}
+			}else{// error un question
+				echo
 				'<div class="alertB ">',
 				"<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
-				'HACE FALTA ALGUNO DE LOS CAMPOS POR LLENAR, POR FAVOR REVISAR',
-				'</div>';
+				'HACE FALTA LA PREGUNTA '.$i,
+				'</div>';	
 			}
 		}
 
@@ -190,279 +169,6 @@
 						<br/>
 						<br/>
 					</h6>
-
-
-					<div class="card-header">
-						<h5 class="card-title">Género</h5>
-					</div>
-					<div class="card-body" >
-						<?php
-						 if(isset($_POST["pgenero"])){
-							if($_POST["pgenero"] === "Femenino"){
-								echo 
-								"<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pg1\" name=\"pgenero\" class=\"custom-control-input\"
-									value=\"Femenino\"
-									checked>
-									<label class=\"custom-control-label\" for=\"pg1\">Femenino</label>
-								</div>";
-							}else{
-								echo 
-								"<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pg1\" name=\"pgenero\" class=\"custom-control-input\"
-									value=\"Femenino\">
-									<label class=\"custom-control-label\" for=\"pg1\">Femenino</label>
-								</div>";
-							}
-
-							if($_POST["pgenero"] === "Masculino"){
-								echo 
-								"<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pg2\" name=\"pgenero\" class=\"custom-control-input\"
-									value=\"Masculino\" checked>
-									<label class=\"custom-control-label\" for=\"pg2\">Masculino</label>
-								</div>";
-							}else{
-								echo 
-								"<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pg2\" name=\"pgenero\" class=\"custom-control-input\"
-									value=\"Masculino\">
-									<label class=\"custom-control-label\" for=\"pg2\">Masculino</label>
-								</div>";
-							}
-
-							if($_POST["pgenero"] === "NN"){
-								echo 
-								"<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pg5\" name=\"pgenero\" class=\"custom-control-input\"
-									value=\"NN\" checked>
-									<label class=\"custom-control-label\" for=\"pg5\">Prefiero no indicarlo</label>
-								</div>";
-							}else{
-								echo 
-								"<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pg5\" name=\"pgenero\" class=\"custom-control-input\"
-									value=\"NN\">
-									<label class=\"custom-control-label\" for=\"pg5\">Prefiero no indicarlo</label>
-								</div>";
-							}
-
-						 }else{	
-							echo 
-							"<div class=\"mb-2 custom-radio custom-control\">
-								<input type=\"radio\" id=\"pg1\" name=\"pgenero\" class=\"custom-control-input\"
-								value=\"Femenino\">
-								<label class=\"custom-control-label\" for=\"pg1\">Femenino</label>
-							</div>
-							<div class=\"mb-2 custom-radio custom-control\">
-								<input type=\"radio\" id=\"pg2\" name=\"pgenero\" class=\"custom-control-input\"
-								value=\"Masculino\">
-								<label class=\"custom-control-label\" for=\"pg2\">Masculino</label>
-							</div>
-							<div class=\"mb-2 custom-radio custom-control\">
-								<input type=\"radio\" id=\"pg5\" name=\"pgenero\" class=\"custom-control-input\"
-								value=\"NN\">
-								<label class=\"custom-control-label\" for=\"pg5\">Prefiero no indicarlo</label>
-							</div>";
-							
-						 }
-						?>
-					</div>
-
-
-					<div class="card-header">
-						<h5 class="card-title">Grado cursado actualemente</h5>
-					</div>
-					<div class="card-body" ">
-
-						<?php
-							if(isset($_POST["grado"])){
-								if($_POST["grado"] === "6" ){
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pgr1\" name=\"grado\" class=\"custom-control-input\"
-										value=\"6\" checked>
-										<label class=\"custom-control-label\" for=\"pgr1\">6°</label>
-									</div>";
-								}else{
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pgr1\" name=\"grado\" class=\"custom-control-input\"
-										value=\"6\">
-										<label class=\"custom-control-label\" for=\"pgr1\">6°</label>
-									</div>";
-								}
-
-								if($_POST["grado"] === "7" ){
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pgr2\" name=\"grado\" class=\"custom-control-input\"
-										value=\"7\" checked>
-										<label class=\"custom-control-label\" for=\"pgr2\">7°</label>
-									</div>";
-								}else{
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pgr2\" name=\"grado\" class=\"custom-control-input\"
-										value=\"7\">
-										<label class=\"custom-control-label\" for=\"pgr2\">7°</label>
-									</div>";
-								}
-
-								if($_POST["grado"] === "8" ){
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pgr3\" name=\"grado\" class=\"custom-control-input\"
-										value=\"8\" checked>
-										<label class=\"custom-control-label\" for=\"pgr3\">8°</label>
-									</div>";
-								}else{
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pgr3\" name=\"grado\" class=\"custom-control-input\"
-										value=\"8\">
-										<label class=\"custom-control-label\" for=\"pgr3\">8°</label>
-									</div>";
-								}
-
-								if($_POST["grado"] === "9" ){
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pgr4\" name=\"grado\" class=\"custom-control-input\"
-										value=\"9\" checked>
-										<label class=\"custom-control-label\" for=\"pgr4\">9°</label>
-									</div>";
-								}else{
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pgr4\" name=\"grado\" class=\"custom-control-input\"
-										value=\"9\">
-										<label class=\"custom-control-label\" for=\"pgr4\">9°</label>
-									</div>";
-								}
-
-							}else {
-								echo
-								"<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pgr1\" name=\"grado\" class=\"custom-control-input\"
-									value=\"6\">
-									<label class=\"custom-control-label\" for=\"pgr1\">6°</label>
-								</div>
-								<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pgr2\" name=\"grado\" class=\"custom-control-input\"
-									value=\"7\">
-									<label class=\"custom-control-label\" for=\"pgr2\">7°</label>
-								</div>
-								<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pgr3\" name=\"grado\" class=\"custom-control-input\"
-									value=\"8\">
-									<label class=\"custom-control-label\" for=\"pgr3\">8°</label>
-								</div>
-								<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pgr4\" name=\"grado\" class=\"custom-control-input\"
-									value=\"9\">
-									<label class=\"custom-control-label\" for=\"pgr4\">9°</label>
-								</div>";
-							}
-						?>
-						
-					</div>
-
-					<div class="card-header">
-						<h5 class="card-title">Edad</h5>
-					</div>
-					<div class="card-body" ">
-						<?php
-							if(isset($_POST["edad"]) ){
-								if($_POST["edad"] === "10-12" ){
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pe1\" name=\"edad\" class=\"custom-control-input\"
-										value=\"10-12\" checked>
-										<label class=\"custom-control-label\" for=\"pe1\">10-12</label>
-									</div>";
-								}else{
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pe1\" name=\"edad\" class=\"custom-control-input\"
-										value=\"10-12\">
-										<label class=\"custom-control-label\" for=\"pe1\">10-12</label>
-									</div>";
-								}
-
-								if($_POST["edad"] === "13-15" ){
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pe2\" name=\"edad\" class=\"custom-control-input\"
-										value=\"13-15\" checked>
-										<label class=\"custom-control-label\" for=\"pe2\">13-15</label>
-									</div>";
-								}else{
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pe2\" name=\"edad\" class=\"custom-control-input\"
-										value=\"13-15\">
-										<label class=\"custom-control-label\" for=\"pe2\">13-15</label>
-									</div>";
-								}
-
-								if($_POST["edad"] === "16-18" ){
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pe3\" name=\"edad\" class=\"custom-control-input\"
-										value=\"16-18\" checked>
-										<label class=\"custom-control-label\" for=\"pe3\">16-18</label>
-									</div>";
-								}else{
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pe3\" name=\"edad\" class=\"custom-control-input\"
-										value=\"16-18\">
-										<label class=\"custom-control-label\" for=\"pe3\">16-18</label>
-									</div>";
-								}
-
-								if($_POST["edad"] === "mas de 18" ){
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pe4\" name=\"edad\" class=\"custom-control-input\"
-										value=\"mas de 18\" checked>
-										<label class=\"custom-control-label\" for=\"pe4\">Mayor de 18</label>
-									</div>";
-								}else{
-									echo
-									"<div class=\"mb-2 custom-radio custom-control\">
-										<input type=\"radio\" id=\"pe4\" name=\"edad\" class=\"custom-control-input\"
-										value=\"mas de 18\">
-										<label class=\"custom-control-label\" for=\"pe4\">Mayor de 18</label>
-									</div>";
-								}
-
-							}else {
-								echo
-								"<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pe1\" name=\"edad\" class=\"custom-control-input\"
-									value=\"10-12\">
-									<label class=\"custom-control-label\" for=\"pe1\">10-12</label>
-								</div>
-								<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pe2\" name=\"edad\" class=\"custom-control-input\"
-									value=\"13-15\">
-									<label class=\"custom-control-label\" for=\"pe2\">13-15</label>
-								</div>
-								<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pe3\" name=\"edad\" class=\"custom-control-input\"
-									value=\"16-18\">
-									<label class=\"custom-control-label\" for=\"pe3\">16-18</label>
-								</div>
-								<div class=\"mb-2 custom-radio custom-control\">
-									<input type=\"radio\" id=\"pe4\" name=\"edad\" class=\"custom-control-input\"
-									value=\"mas de 18\">
-									<label class=\"custom-control-label\" for=\"pe4\">Mayor de 18</label>
-								</div>";
-							}
-						?>
-					</div>
 
 					
 					<?php
