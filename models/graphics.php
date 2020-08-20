@@ -1,4 +1,5 @@
 <?php
+    
     require "controller/connection.php";
     
     // consult the existence or results
@@ -19,7 +20,7 @@
 
     if(( $resultadoGen->num_rows > 0 && $resultadoLs->num_rows > 0  ) && $resultadoTp->num_rows > 0)
     { // se puede cargar el modulo de  graficos 
-
+        include "infoResults.php";
     }
     else
     {
