@@ -69,7 +69,28 @@
       }
       
     }
+    
+    //  generate the result about the code max result in 
+    $arrayVals = $rowsTp;
+    $maxVal1 = max( $arrayVals);
+    $max1 = array_search( $maxVal1, $arrayVals);
+    unset($arrayVals[$max1]);
+    $maxVal2 = max( $arrayVals);
+    $max2 = array_search( $maxVal2, $arrayVals);
+    
+    // 5% of tolerance
+    if( abs( $maxVal1  - $maxVal2) < 5){
+      $conteo = 2;
+    }else{
+      $conteo = 1;
+    }
 
+    
+    
+    
+    
+
+    
     //set 
     $backg_b["perception"] = getcolor($rowsLs["perception_val"])["rgb"];
     $backg["perception"] = getcolor($rowsLs["perception_val"])["rgba"];
@@ -96,7 +117,7 @@
 
 <div class="row">
 
-  <div class="col-xl-7 col-lg-6">
+  <div class="col-xl-7 col-lg-2">
     <div class="card shadow mb-2 mt-2">
         <div class="card-header py-2">
             <h6 class="m-1 font-weight-bold text-primary">Learn Styles</h6>
@@ -200,7 +221,7 @@
   </script>
 
   <!-- radial barchart -->
-  <div class="col-xl-5 col-lg-6">
+  <div class="col-xl-5">
     <div  class="card shadow  mb-2 mt-2">
       <div class="card-header py-2">
           <h6 class="m-1 font-weight-bold text-primary">Type of Players</h6>
@@ -214,11 +235,168 @@
       </div>
 
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Philanthrop:  <?php echo $rowsTp["philanthrop"] ?> % </li>
-        <li class="list-group-item">Socialiser:   <?php echo $rowsTp["socialiser"] ?> %  </li>
-        <li class="list-group-item">Free Spirit:  <?php echo $rowsTp["free_spirit"] ?> % </li>
-        <li class="list-group-item">Achiever:     <?php echo $rowsTp["achiever"] ?> %    </li>
-        <li class="list-group-item">Disruptor:    <?php echo $rowsTp["disruptor"] ?> %   </li>
+        <!-- filantropo -->
+        <?php if (($max1 == "philanthrop" && $conteo > 0) || 
+                    ($max2 == "philanthrop" && $conteo > 0)
+                  ){ $conteo--;?>
+          <li class="list-group list-group-flush">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  Philanthrop:  <?php echo $rowsTp["philanthrop"] ?> % 
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <i class="fas fa-angle-down"></i>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  La motivación para este tipo en particular, pues se interesa por el bien común, por ejercer un beneficio al entorno, generando acciones por una causa, un bienestar.
+                  Suele ser muy agradable y se ve constantemente involucrado en acciones de ayuda y bienestar social, generando un agregado positivo, suele ayudar a los integrantes a generar resultados y avanzar en el proceso aparte de ser excelente guía sobre lo que conoce.
+                </div>
+              </div>
+            </div>
+          </li>
+        <?php }else {  ?>
+          <li class="list-group-item">Philanthrop:  <?php echo $rowsTp["philanthrop"] ?> % </li>
+        <?php }?>
+
+        <!-- socialicer -->
+        <?php if (($max1 == "socialiser" && $conteo > 0) ||
+                  ($max2 == "socialiser" && $conteo > 0)
+                  ){ $conteo--;?>
+          <li class="list-group list-group-flush">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  Socialiser:   <?php echo $rowsTp["socialiser"] ?> %  
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="false" aria-controls="collapseOne">
+                    <i class="fas fa-angle-down"></i>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne2" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  La motivación reside de manera fuerte en cualquiera de los tipos de interacción con los otros participantes, logrando compartir y socializar tanto progresos, temática, información o preferencias con respecto a su entorno.
+                  Se incluye en grupos de manera particular y le agrada participar de manera proactiva en actividades conformadas por equipos de trabajo.
+                </div>
+              </div>
+            </div>
+          </li>
+        <?php }else {  ?>
+          <li class="list-group-item">Socialiser:   <?php echo $rowsTp["socialiser"] ?> %  </li>
+        <?php }?>
+
+        <!-- Free spirit -->
+        <?php if (($max1 == "free_spirit" && $conteo > 0) ||
+                  ($max2 == "free_spirit" && $conteo > 0)
+                ){ $conteo--; ?>
+          <li class="list-group list-group-flush">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  Free Spirit:  <?php echo $rowsTp["free_spirit"] ?> %
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="false" aria-controls="collapseOne">
+                    <i class="fas fa-angle-down"></i>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne3" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  Una gran motivación es agregada a las actividades que permitan desarrollar de manera creativa distintas habilidades y le permita ser autónomo, de tal forma, logra explorar de distintas maneras para moverse dentro de su entorno y llegar a su objetivo de forma innovadora.
+                  Podría verse involucrado en temáticas de desarrollo creativo con facilidad, demostrando un impulso a explorar nuevos caminos dentro de la dinámica.
+                </div>
+              </div>
+            </div>
+          </li>
+        <?php }else {  ?>
+          <li class="list-group-item">Free Spirit:  <?php echo $rowsTp["free_spirit"] ?> % </li>
+        <?php }?>
+
+         <!-- Achiever -->
+         <?php if (($max1 == "achiever" && $conteo > 0) ||
+                    ($max2 == "achiever" && $conteo > 0)
+                  ){ $conteo--; ?>
+          <li class="list-group list-group-flush">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  Achiever:     <?php echo $rowsTp["achiever"] ?> %   
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne4" aria-expanded="false" aria-controls="collapseOne">
+                    <i class="fas fa-angle-down"></i>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne4" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  Sus intenciones y motivación se despiertan al intentar dominar distintas actividades u objetivos, constantemente se ve involucrado en acciones respectivas a el desarrollo de habilidades específicas, las cuales, con constancia se podrían masterizar, logrando niveles de eficacia y gran afinidad.
+                  Necesitan respectivamente, encontrar un reto constante, pues se ven poco involucrados en actividades que generen un desafío para su capacidad actual.	
+                </div>
+              </div>
+            </div>
+          </li>
+        <?php }else {  ?>
+          <li class="list-group-item">Achiever:     <?php echo $rowsTp["achiever"] ?> %    </li>
+        <?php }?>
+
+         <!-- Player -->
+         <?php if (($max1 == "player" && $conteo > 0) ||
+                    ($max2 == "player" && $conteo > 0)
+                    ){ $conteo--; ?>
+          <li class="list-group list-group-flush">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  Playe:        <?php echo $rowsTp["player"] ?> %  
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne5" aria-expanded="false" aria-controls="collapseOne">
+                    <i class="fas fa-angle-down"></i>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne5" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  La motivación está focalizada dentro de la especificación de recibir recompensas y reconocimientos de cualquier tipo, sobretodo, aquellas recompensas que son mucho más visibles y evidentes.
+                  Su motivación, es inicialmente fuerte y perdura con respecto a la calidad de su recompensa dentro de sus gustos y valor perteneciente a su entorno.
+                </div>
+              </div>
+            </div>
+          </li>
+        <?php }else {  ?>
+          <li class="list-group-item">Playe:  <?php echo $rowsTp["player"] ?> %   </li>
+        <?php }?>
+
+         <!-- Disruptor -->
+         <?php if (($max1 == "disruptor" && $conteo > 0)||
+                    ($max2 == "disruptor" && $conteo > 0)
+                  ){ $conteo--; ?>
+          <li class="list-group list-group-flush">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  Disruptor:    <?php echo $rowsTp["disruptor"] ?> %    
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne6" aria-expanded="false" aria-controls="collapseOne">
+                    <i class="fas fa-angle-down"></i>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne6" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  La motivación especial de este tipo de jugador, es generar un cambio dentro del sistema, una disrupción, generar un nuevo punto, sus motivaciones no van exactamente con participar con el sistema, por el contrario quieren generar nuevas maneras de realizar determinados objetivos sin pasar por el procedimiento generado por definición.
+                  En muchas ocasiones, son la mejor ayuda para encontrar nuevas puertas traseras y mejorar la implementación del sistema.
+                </div>
+              </div>
+            </div>
+          </li>
+        <?php }else {  ?>
+          <li class="list-group-item">Disruptor:    <?php echo $rowsTp["disruptor"] ?> %   </li>
+        <?php }?>
+        
       </ul>
 
     </div>

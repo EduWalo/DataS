@@ -130,9 +130,8 @@
             
             <div id="layoutSidenav_content" >
                 <!-- contenido -->
-
                 <main>
-                    <div class="container-fluid">
+                    <div class="container-fluid " style="background-color: #EEF1F9">
                         
                         <?php
                         //gestor de contenido 
