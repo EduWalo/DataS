@@ -1,3 +1,6 @@
+CREATE DATABASE dataapp;
+
+
 CREATE TABLE client 
 (
     id_student INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -92,7 +95,7 @@ CREATE TABLE quiz_learn_styles_rs
     
     PRIMARY KEY (id_student),
     FOREIGN KEY (id_student) REFERENCES client(id_student)
-)
+);
 
 CREATE TABLE quiz_type_players
 (
