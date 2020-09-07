@@ -36,6 +36,11 @@
                 isset($_POST["YouTube"])
                 ))
             {
+                // validate the semester seleccion 
+                if($_POST["grado"] === "S" ){
+                    $_POST["grado"] = "Semestre: ".$_POST["semestre"];
+                }
+                
                    $sql_geneal = 
                     "INSERT INTO quiz_general VALUES("
                     .$_SESSION["id"].","
@@ -119,7 +124,11 @@
                             window.location.href = \"principal.php?action=inicio\";
                         </script>
                         ";
-                        
+
+                        echo '<div class="alertB">',
+						"<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
+						'<strong>¡Cuidado!</strong> error con el server<br>',$mysqli->error,
+						'</div>'; 
 
                     }else {
                         echo '<div class="alertB">',
@@ -149,7 +158,8 @@
 <div class=" mt-4 ml-n1"  >
 
     <div class="header col-lg-8" >
-        <h1 class="page-header-title" >Encuesta de información general  </h1>
+        <h1 class="page-header-title" >Test: Información general  </h1>
+        <h6 class="text-muted"> Por favor lea atentamente y seleccione la respuesta dependiendo más se adapte a usted. </h6>
     </div>
 
     <form name="F1" action="<?php echo "?action=gen"?>"  method="POST" >
@@ -240,9 +250,9 @@
             <!-- GRADO -->
             <div class="card mb-2">
                 <div class="card-header">
-                    <h5 class="card-title">Grado cursado actualmente</h5>
+                    <h5 class="card-title">Grado o periodo académico que actualemnte cursa</h5>
                 </div>
-                <div class="card-body" ">
+                <div class="card-body" >
 
                     <?php
                         if(isset($_POST["grado"])){
@@ -250,14 +260,16 @@
                                 echo
                                 "<div class=\"mb-2 custom-radio custom-control\">
                                     <input type=\"radio\" id=\"pgr1\" name=\"grado\" class=\"custom-control-input\"
-                                    value=\"6\" checked>
+                                    value=\"6\" checked 
+                                    onChange=\"habilitarSemstre();\">
                                     <label class=\"custom-control-label\" for=\"pgr1\">6°</label>
                                 </div>";
                             }else{
                                 echo
                                 "<div class=\"mb-2 custom-radio custom-control\">
                                     <input type=\"radio\" id=\"pgr1\" name=\"grado\" class=\"custom-control-input\"
-                                    value=\"6\">
+                                    value=\"6\"
+                                    onChange=\"habilitarSemstre();\">
                                     <label class=\"custom-control-label\" for=\"pgr1\">6°</label>
                                 </div>";
                             }
@@ -266,14 +278,16 @@
                                 echo
                                 "<div class=\"mb-2 custom-radio custom-control\">
                                     <input type=\"radio\" id=\"pgr2\" name=\"grado\" class=\"custom-control-input\"
-                                    value=\"7\" checked>
+                                    value=\"7\" checked
+                                    onChange=\"habilitarSemstre();\">
                                     <label class=\"custom-control-label\" for=\"pgr2\">7°</label>
                                 </div>";
                             }else{
                                 echo
                                 "<div class=\"mb-2 custom-radio custom-control\">
                                     <input type=\"radio\" id=\"pgr2\" name=\"grado\" class=\"custom-control-input\"
-                                    value=\"7\">
+                                    value=\"7\"
+                                    onChange=\"habilitarSemstre();\">
                                     <label class=\"custom-control-label\" for=\"pgr2\">7°</label>
                                 </div>";
                             }
@@ -282,14 +296,16 @@
                                 echo
                                 "<div class=\"mb-2 custom-radio custom-control\">
                                     <input type=\"radio\" id=\"pgr3\" name=\"grado\" class=\"custom-control-input\"
-                                    value=\"8\" checked>
+                                    value=\"8\" checked
+                                    onChange=\"habilitarSemstre();\">
                                     <label class=\"custom-control-label\" for=\"pgr3\">8°</label>
                                 </div>";
                             }else{
                                 echo
                                 "<div class=\"mb-2 custom-radio custom-control\">
                                     <input type=\"radio\" id=\"pgr3\" name=\"grado\" class=\"custom-control-input\"
-                                    value=\"8\">
+                                    value=\"8\"
+                                    onChange=\"habilitarSemstre();\">
                                     <label class=\"custom-control-label\" for=\"pgr3\">8°</label>
                                 </div>";
                             }
@@ -298,39 +314,103 @@
                                 echo
                                 "<div class=\"mb-2 custom-radio custom-control\">
                                     <input type=\"radio\" id=\"pgr4\" name=\"grado\" class=\"custom-control-input\"
-                                    value=\"9\" checked>
+                                    value=\"9\" checked
+                                    onChange=\"habilitarSemstre();\">
                                     <label class=\"custom-control-label\" for=\"pgr4\">9°</label>
                                 </div>";
                             }else{
                                 echo
                                 "<div class=\"mb-2 custom-radio custom-control\">
                                     <input type=\"radio\" id=\"pgr4\" name=\"grado\" class=\"custom-control-input\"
-                                    value=\"9\">
+                                    value=\"9\"
+                                    onChange=\"habilitarSemstre();\">
                                     <label class=\"custom-control-label\" for=\"pgr4\">9°</label>
                                 </div>";
                             }
+
+                            // seleccion de semestre
+                            if(substr( $_POST["grado"],0,1) === "S" ){
+                                // get text
+                                 
+                                $selectpr = array("","","","","","","","","","","","","");
+                                $selectpr[$_POST["semestre"]] = "selected=\"selected\"";
+                                
+
+                                echo
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pgr5\" name=\"grado\" class=\"custom-control-input\"
+                                    value=\"S\" checked
+                                    onChange=\"habilitarSemstre();\">
+                                    <label class=\"custom-control-label\" for=\"pgr5\">Semestre </label>
+                                    
+                                    <select class=\"col-2 ml-4\" name=\"semestre\" id=\"boton\"  style=\"display:\"  >
+                                        <option $selectpr[1]>1</option>
+                                        <option $selectpr[2]>2</option>
+                                        <option $selectpr[3]>3</option>
+                                        <option $selectpr[4]>4</option>
+                                        <option $selectpr[5]>5</option>
+                                        <option $selectpr[6]>6</option>
+                                        <option $selectpr[7]>7</option>
+                                        <option $selectpr[8]>8</option>
+                                        <option $selectpr[9]>9</option>
+                                        <option $selectpr[10]>10</option>
+                                        <option $selectpr[11]>11</option>
+                                        <option $selectpr[12]>12</option>
+                                    </select>
+                                    
+                                </div>";
+                            }else{
+                                echo
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pgr5\" name=\"grado\" class=\"custom-control-input\"
+                                    value=\"S\"
+                                    onChange=\"habilitarSemstre();\">
+                                    <label class=\"custom-control-label\" for=\"pgr5\">Semestre </label>
+                                    <select class=\"col-2 ml-4\" name=\"semestre\" id=\"boton\"  style=\"display:none\">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>";
+                            }
+                            
 
                         }else {
                             echo
                             "<div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr1\" name=\"grado\" class=\"custom-control-input\"
-                                value=\"6\">
+                                value=\"6\" onChange=\"habilitarSemstre();\">
                                 <label class=\"custom-control-label\" for=\"pgr1\">6°</label>
                             </div>
                             <div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr2\" name=\"grado\" class=\"custom-control-input\"
-                                value=\"7\">
+                                value=\"7\" onChange=\"habilitarSemstre();\">
                                 <label class=\"custom-control-label\" for=\"pgr2\">7°</label>
                             </div>
                             <div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr3\" name=\"grado\" class=\"custom-control-input\"
-                                value=\"8\">
+                                value=\"8\" onChange=\"habilitarSemstre();\">
                                 <label class=\"custom-control-label\" for=\"pgr3\">8°</label>
                             </div>
                             <div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr4\" name=\"grado\" class=\"custom-control-input\"
-                                value=\"9\">
+                                value=\"9\" onChange=\"habilitarSemstre();\">
                                 <label class=\"custom-control-label\" for=\"pgr4\">9°</label>
+                            </div>
+                            <div class=\"mb-2 custom-radio custom-control\">
+                                <input type=\"radio\" id=\"pgr5\" name=\"grado\" class=\"custom-control-input\"
+                                value=\"S\" onChange=\"habilitarSemstre();\" >
+                                <label class=\"custom-control-label\" for=\"pgr5\">Semestre </label>
+                                <input  />
+                                <select class=\"col-2 ml-4\" name=\"semestre\" id=\"boton\"  style=\"display:none\">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
                             </div>";
                         }
                     ?>
@@ -431,10 +511,12 @@
                                 <input type=\"radio\" id=\"pe4\" name=\"edad\" class=\"custom-control-input\"
                                 value=\"mas de 18\">
                                 <label class=\"custom-control-label\" for=\"pe4\">Mayor de 18</label>
-                            </div>";
+                            </div>
+                            
+                            ";
                         }
                     ?>
-                </div>
+                </div>Semestre
             </div>
 
             <!-- PLATAFORMAS -->
@@ -597,4 +679,21 @@
         </div>
     </form>
 </div>
+
+<script>
+    // habilita la posibilidad de ingresar el semestre
+    function habilitarSemstre()
+    {
+        if( document.getElementById('pgr5').checked) 
+        {
+            document.getElementById('boton').style.display = "";
+        }
+        else 
+        {
+            document.getElementById('boton').style.display = "none";
+        }
+    }
+
+    
+</script>
 <?php }?>

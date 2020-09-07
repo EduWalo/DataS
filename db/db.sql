@@ -1,5 +1,5 @@
-CREATE DATABASE dataapp;
-
+CREATE DATABASE  IF NOT EXISTS dataapp;
+use dataapp;
 
 CREATE TABLE client 
 (

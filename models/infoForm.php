@@ -2,7 +2,7 @@
 <div class="container">
         <div class="row align-items-center ">
             <div class="col-lg-4 aos-init text-left">
-                <p class="lead">Debe llenar todos los formularios para poder revisar los resultados</p>
+                <p class="lead">Debe diligenciar todos los formularios para poder que se muestren tus los resultados</p>
 
                 
                 <ul>
@@ -10,7 +10,7 @@
                     <li>
                         <a href="principal.php?action=gen">
                             <i class="fas fa-arrow-left mr-1"></i>
-                            Formulario: General.
+                            Test: Información General.
                         </a>
                     </li>
                     <?php }?>
@@ -19,7 +19,7 @@
                     <li>
                         <a href="principal.php?action=frmls">
                             <i class="fas fa-arrow-left mr-1"></i>
-                            Formulario: Estilos de aprendizaje
+                            Test: Estilos de aprendizaje
                         </a>
                     </li>
                     <?php }?>
@@ -28,7 +28,7 @@
                     <li>
                         <a href="principal.php?action=frmtp">
                             <i class="fas fa-arrow-left mr-1"></i>
-                            Formulario: Tipos de jugador
+                            Test: Perfiles de jugador
                         </a>
                     </li>
                     <?php }?>

@@ -25,8 +25,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+
         <title>Data student</title>
+        <!-- icon app -->
         <link rel="icon" href="models/img/fab.ico" />
+
         <link href="css/personalStyles.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -82,30 +85,33 @@
                                 Inicio
                             </a>
 
+                            <?php if ($type_user == 1){?>
                             <a class="nav-link" href="principal.php?action=estadisticaas">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Informes
                             </a>
+                            <?php  }?>
 
                             <a class="nav-link" href="principal.php?action=graphics">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Resultados
                             </a>
 
-                            <div class="sb-sidenav-menu-heading">DATOS</div><!-- titulo divisor-->
+                            <div class="sb-sidenav-menu-heading">Encuestas</div><!-- titulo divisor-->
                             
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>
-                                Formularios
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           <!-- Encuestas -->
+                           <a class="nav-link" href="principal.php?action=gen">
+                                <div class="sb-nav-link-icon"><i class="fa fa-globe"></i></div>
+                                Test de Información General
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="principal.php?action=gen">General</a>
-                                    <a class="nav-link" href="principal.php?action=frmls">Estilos de aprendizaje</a>
-                                    <a class="nav-link" href="principal.php?action=frmtp">Tipos de jugador</a>
-                                </nav>
-                            </div>
+                            <a class="nav-link" href="principal.php?action=frmls">
+                                <div class="sb-nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
+                                Test de Estilos de Aprendizaje
+                            </a>
+                            <a class="nav-link" href="principal.php?action=frmtp">
+                                <div class="sb-nav-link-icon"><i class="fa fa-gamepad"></i></div>
+                                Test de Perfiles de Jugadores
+                            </a>
 
                             
                         </div>
@@ -141,15 +147,11 @@
                 </main>
 
 
-                <footer class="py-4 bg-light mt-auto">
+                <footer class="py-3 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Data student 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                            <div class="text-muted"> Data student 2020</div>
+                            
                         </div>
                     </div>
                 </footer>
