@@ -70,21 +70,6 @@
       
     }
     
-    //  generate the result about the code max result in 
-    $arrayVals = $rowsTp;
-    $maxVal1 = max( $arrayVals);
-    $max1 = array_search( $maxVal1, $arrayVals);
-    unset($arrayVals[$max1]);
-    $maxVal2 = max( $arrayVals);
-    $max2 = array_search( $maxVal2, $arrayVals);
-    
-    // 5% of tolerance
-    if( abs( $maxVal1  - $maxVal2) < 5){
-      $conteo = 2;
-    }else{
-      $conteo = 1;
-    }
-    
     //set 
     $backg_b["perception"] = getcolor($rowsLs["perception_val"])["rgb"];
     $backg["perception"] = getcolor($rowsLs["perception_val"])["rgba"];
@@ -98,6 +83,85 @@
     $backg_b["understand"] = getcolor($rowsLs["understand_val"])["rgb"];
     $backg["understand"] = getcolor($rowsLs["understand_val"])["rgba"];
 
+
+    //tratamiento
+    
+    $motivacionesTP = array(
+      "philanthrop" => '<h6 class=" card-subtitle">Componente Filántropo: <i> Propósito </i></h6>
+        <p class="card-text p-2">
+          Requiere un propósito como motivación principal, siendo capaz de trabajar por esta sin esperar algo a cambio. 
+          <br>
+          Puede ser de mucha ayuda para servir constructivamente y generar una experiencia positiva. 
+          <br>
+          Responde de manera motivada ante elementos de intercambio de conocimiento, tareas administrativas, roles de guía y actividades de comercio o colección. 
+        </p>',
+
+      "socialiser" =>
+        '<h6 class=" card-subtitle">Componente Socializador:  <i>Relaciones Interpersonales </i></h6>
+        <p class="card-text p-2">
+          Requiere de un entorno que les permita gene   rar distintas conexiones interpersonales con los demás participantes. 
+          <br>
+          Es visto muy motivado dentro de los entornos en donde se pueda interactuar con otros y crear conexiones sociales, respondiendo a estímulos y actividades elaboradas para desarrollarse de manera grupal. 
+          <br>
+          Responde de manera positiva ante actividades que se definan en entornos de trabajo en equipo o agrupaciones, gremios, etc. 
+        </p>',
+
+      "free_spirit" => 
+        '<h6 class=" card-subtitle">Componente Espíritu Libre: <i>Autonomía</i> </h6>
+        <p class="card-text p-2">
+          Requiere de un entorno que no limite las acciones de descubrimiento y exploración. 
+          <br>
+          Puede ser de ayuda en contextos de navegación, creatividad e innovación, siendo capaces de ejercer buenos resultados mientras no exista un control externo que les impida percibir una libertad. 
+          <br>
+          Responde continuamente a los estímulos de exploración, personalización, contenido desbloqueable y sorpresas. 
+        </p>',
+
+      "achiever" =>
+        '<h6 class=" card-subtitle">Componentes Triunfador: <i>Competencia </i></h6>
+        <p class="card-text p-2">
+          Requiere un entorno competitivo, en donde se recompense sus logros con tareas que parezcan un reto, no solo con la complejidad de la tarea si no con la dificultad que presenta ante sus habilidades. 
+          <br>
+          Es capaz de completar tareas que requieran niveles de habilidades específicos para desarrollarlas. 
+          <br>
+          Responde de manera activa dentro de actividades que representen desafíos, donde sea capaz de medir su progreso, requieran del aprendizaje de nuevas habilidades. 
+        </p>',
+      
+      "player" => 
+        '<h6 class=" card-subtitle">Componente Jugador: <i>Recompensas</i> </h6>
+        <p class="card-text p-2">
+          Requiere de una recompensa a cambio de realizar las tareas propuestas. 
+          <br>
+          Se mantiene el interés siempre y cuando la recompensa sea de su agrado o despierte su curiosidad. 
+          <br>
+          Responde de manera comprometida con aquellas actividades, sin importar el tipo de la misma, que conlleve un premio, reconocimiento, puntuación o ganancia. 
+        </p>',
+      
+      "disruptor" => 
+        '<h6 class=" card-subtitle"> Componente Disruptor: <i>Cambio</i>  </h6>
+        <p class="card-text p-2">
+          No requieren un entorno específico para que entren a ejercer sus intereses, pues su motivación está en impulsar un cambio dentro del sistema planteado, colocando sus límites a prueba y forzando nuevas opciones. 
+          <br>
+          Presta una gran ayuda para determinar la consistencia en las actividades empleadas y muchas veces para generar cambios positivos o innovadores. 
+        </p>'
+    );
+
+    function getScaleMotivations($resultadosTP,$motivacionesTPI){
+      //$arrayVals = $rowsTp;
+      $arrayVals = $resultadosTP;
+      for ($i=0; $i < 6; $i++) { 
+        //take MAx
+        $maxVal = max( $arrayVals);
+        //take indx
+        $maxIndex = array_search( $maxVal, $arrayVals);
+        //delete max val
+        unset($arrayVals[$maxIndex]);
+
+        //show options
+        echo $motivacionesTPI[$maxIndex];
+      }
+    }
+
+   
 
 ?>
 
@@ -123,139 +187,109 @@
 <!-- contenido de las pestañas -->
 <div class="tab-content col-auto id="pills-tabContent">
 
-    <!-- Graficas estilos de aprendizaje  -->
-    <div class="tab-pane fade show active" id="pills-ls" role="tabpanel" aria-labelledby="pills-ls-tab">
-      <!-- graphic -->
-      <canvas  id="bar-chart"  class="chartjs-render-monitor" style=" width: 1100rem; height: 420rem;" ></canvas>
-      <!-- info -->
+  <!-- Graficas estilos de aprendizaje  -->
+  <div class="tab-pane fade show active" id="pills-ls" role="tabpanel" aria-labelledby="pills-ls-tab">
+    <!-- graphic -->
+    <canvas  id="bar-chart"  class="chartjs-render-monitor" style=" width: 1100rem; height: 420rem;" ></canvas>
+    <!-- info -->
 
-      <div class="">
-        <h4 class="text-info"> Evaluación</h4>
+    <div class="">
+      <h4 class="text-info"> Evaluación</h4>
+      <p class="card-tex lead">
+        Con respecto a las respuestas dadas para el test de <i> estilos de aprendizaje</i>, 
+        se pueden observar distintos rasgos cognitivos, que pueden indicar como tu perfil de estudiante te permite percibir, 
+        interactuar y responder a diferentes ambientes de aprendizaje; algunas de esas características que se pueden inferir para tu perfil como estudiante, por tus respuestas son: 
+      </p>
 
-        <p class="card-tex lead">
-          Con respecto a las respuestas dadas para el test de <i> estilos de aprendizaje</i>, 
-          se pueden observar distintos rasgos cognitivos, que pueden indicar como tu perfil de estudiante te permite percibir, 
-          interactuar y responder a diferentes ambientes de aprendizaje; algunas de esas características que se pueden inferir para tu perfil como estudiante, por tus respuestas son: 
-        </p>
+      <dl class="blockquote">
+        <dt class="mt-4">¿Qué tipo de información perciben preferentemente los estudiantes?</dt>
+        <dd class="pl-4 ">
+          <?php 
+            echo getKnow($rowsLs["perception_val"]," Sensorial e Intuitiva ",$labelsLs["perception"]  );
+          ?>
+        </dd>
 
-        <dl class="blockquote">
-          <dt class="mt-4">¿Qué tipo de información perciben preferentemente los estudiantes?</dt>
-          <dd class="pl-4 ">
-            <?php 
-              echo getKnow($rowsLs["perception_val"]," Sensorial e Intuitiva ",$labelsLs["perception"]  );
-            ?>
-          </dd>
+        <dt class="mt-4">¿A través de qué modalidad sensorial es más efectivamente percibida la información cognitiva?</dt>
+        <dd class="pl-4">
+          <?php 
+            echo getKnow($rowsLs["input_val"]," Visual y Verbal ",$labelsLs["input"]  );
+          ?>
+        </dd>
 
-          <dt class="mt-4">¿A través de qué modalidad sensorial es más efectivamente percibida la información cognitiva?</dt>
-          <dd class="pl-4">
-            <?php 
-              echo getKnow($rowsLs["input_val"]," Visual y Verbal ",$labelsLs["input"]  );
-            ?>
-          </dd>
+        <dt class="mt-4">¿Con qué tipo de organización de la información está más cómodo el estudiante a la hora de trabajar?</dt>
+        <dd class="pl-4">
+          <?php 
+            echo getKnow($rowsLs["processes_val"]," Activo y Reflectivo ",$labelsLs["processes"]  );
+          ?>
+        </dd>
 
-          <dt class="mt-4">¿Con qué tipo de organización de la información está más cómodo el estudiante a la hora de trabajar?</dt>
-          <dd class="pl-4">
-            <?php 
-              echo getKnow($rowsLs["processes_val"]," Activo y Reflectivo ",$labelsLs["processes"]  );
-            ?>
-          </dd>
+        <dt class="mt-4">¿Cómo progresa el estudiante en su aprendizaje?</dt>
+        <dd class="pl-4">
+          <?php 
+            echo getKnow($rowsLs["understand_val"]," Global y Secuencial ",$labelsLs["understand"]  );
+          ?>
+        </dd>
+      </dl>
+    </div>
+  </div>
 
-          <dt class="mt-4">¿Cómo progresa el estudiante en su aprendizaje?</dt>
-          <dd class="pl-4">
-            <?php 
-              echo getKnow($rowsLs["understand_val"]," Global y Secuencial ",$labelsLs["understand"]  );
-            ?>
-          </dd>
-
-          
-        </dl>
-        
+  <!-- Graficas de tipos de jugador -->
+  <div class="tab-pane fade" id="pills-tp" role="tabpanel" aria-labelledby="pills-tp-tab">
+    <div class="row align-items-center"">
+      <div class="col-12 col-md-6" >
+        <canvas id="chartjs-3"  class="chartjs-render-monitor b-2" ></canvas>
       </div>
-      
-
-
-      <div class="card shadow ">
-        
-        <div class="card-header "></div>
-        <div class="card-body">
-          
-
-
-        </div>
-        
-
+      <div class="col-10 col-md-6" >
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <h5 class="card-title"></h5>
+            Componente Filántropo :  <?php echo $rowsTp["philanthrop"]; ?> %
           </li>
-          
-        </ul>
-        <div class="card-body">
 
-          <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <div class="card-text">
-            <?php
-              echo "<h6>Percepción: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["perception_val"]," Sensorial e Intuitiva ",$labelsLs["perception"]  )."</p>";
-              echo "<h6>Canal de entrada: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["input_val"]," Visual y Verbal ",$labelsLs["input"]  )."</p>";
-              echo "<h6>Proceso: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["processes_val"]," Activo y Reflectivo ",$labelsLs["processes"]  )."</p>";
-              echo "<h6>Entendimiento: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["understand_val"]," Global y Secuencial ",$labelsLs["understand"]  )."</p>";
-            ?>  
-          </div>
-        </div>    
+          <li class="list-group-item">
+            Componente Socializador :   <?php echo $rowsTp["socialiser"]; ?> %
+          </li>
+
+          <li class="list-group-item">
+            Componente Espíritu Libre :  <?php echo $rowsTp["free_spirit"]; ?> %
+          </li>
+
+          <li class="list-group-item">
+            Componentes Triunfador :   <?php echo $rowsTp["achiever"]; ?> %
+          </li>
+
+          <li class="list-group-item">
+            Componente Jugador :  <?php echo $rowsTp["player"]; ?> %
+          </li>
+
+          <li class="list-group-item">
+            Componente Disruptor : <?php echo $rowsTp["disruptor"]; ?> %    
+          </li>
+        </ul>
       </div>
     </div>
 
-    <!-- Graficas de tipos de jugador -->
-    <div class="tab-pane fade" id="pills-tp" role="tabpanel" aria-labelledby="pills-tp-tab">
+    <div class="card mt-2 shadow">
+      <div class="card-header">
+        <h5>Escala de motivaciones </h5>
+        <h6 class="card-subtitle mb-2 text-muted"> 
+        Encontrar ordenadas de manera descendente aquellas descripciones de las motivaciones, desde la más importante a la que menos puede generar un impacto importante, partiendo desde el perfil de jugador inferido por las respuestas al test de Perfiles de Jugadores 
+        </h6>
+      </div>
+      <div class="card-body">
+        <?php
+          getScaleMotivations($rowsTp,$motivacionesTP);
+        ?>
+      </div>
 
     </div>
-    
   </div>
+</div>
 
 
-<div class="row">
-  <div class="col-xl-7 col-lg-2">
-    <div class="card shadow mb-2 mt-2">
-        <div class="card-header py-2">
-            <h6 class="m-1 font-weight-bold text-primary">Estilos de aprendizaje  </h6>    
-        </div>
-        
-        <div class="card-body">
-            <div class="chart-area">
-              <canvas id="bar-chart"  class="chartjs-render-monitor" style="display: block; width: 442px; height: 320px;">
-              </canvas>
-            </div>
-            <div id="accordion">
-              
-                <div class="card-header" id="headingTwo">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Evaluación
-                    </button>
-                  </h5>
-                </div>
 
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                
-                  <div class="card-text">
-                    <?php
-                        echo "<h6>Percepción: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["perception_val"]," Sensorial e Intuitiva ",$labelsLs["perception"]  )."</p>";
-                        echo "<h6>Canal de entrada: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["input_val"]," Visual y Verbal ",$labelsLs["input"]  )."</p>";
-                        echo "<h6>Proceso: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["processes_val"]," Activo y Reflectivo ",$labelsLs["processes"]  )."</p>";
-                        echo "<h6>Entendimiento: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["understand_val"]," Global y Secuencial ",$labelsLs["understand"]  )."</p>";
-                    ?>
-                  </div>
-                </div>
-              
-            </div>
-        </div>
 
-        
-    </div>
-  </div>
-  <!-- script barchart -->
-  <script>
+<!-- script barchart -->
+<script>
     // Bar chart
     new Chart(document.getElementById("bar-chart"), {
         type: 'horizontalBar',
@@ -325,190 +359,10 @@
           
         }
     });
-  </script>
+</script>
 
-  <!-- radial barchart -->
-  <div class="col-xl-5">
-    <div  class="card shadow  mb-2 mt-2">
-      <div class="card-header py-2">
-          <h6 class="m-1 font-weight-bold text-primary">Type of Players</h6>
-      </div>
-      
-      <div class="card-body">
-        <div class="chart-area">
-          <canvas id="chartjs-3"  class="chartjs-render-monitor" style="display: block; width: 442px; height: 320px;">
-          </canvas>
-        </div>
-      </div>
-
-      <ul class="list-group list-group-flush">
-        <!-- filantropo -->
-        <?php if (($max1 == "philanthrop" && $conteo > 0) || 
-                    ($max2 == "philanthrop" && $conteo > 0)
-                  ){ $conteo--;?>
-          <li class="list-group list-group-flush">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  Philanthrop:  <?php echo $rowsTp["philanthrop"] ?> % 
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <i class="fas fa-angle-down"></i>
-                  </button>
-                </h5>
-              </div>
-
-              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                  La motivación para este tipo en particular, pues se interesa por el bien común, por ejercer un beneficio al entorno, generando acciones por una causa, un bienestar.
-                  Suele ser muy agradable y se ve constantemente involucrado en acciones de ayuda y bienestar social, generando un agregado positivo, suele ayudar a los integrantes a generar resultados y avanzar en el proceso aparte de ser excelente guía sobre lo que conoce.
-                </div>
-              </div>
-            </div>
-          </li>
-        <?php }else {  ?>
-          <li class="list-group-item">Philanthrop:  <?php echo $rowsTp["philanthrop"] ?> % </li>
-        <?php }?>
-
-        <!-- socialicer -->
-        <?php if (($max1 == "socialiser" && $conteo > 0) ||
-                  ($max2 == "socialiser" && $conteo > 0)
-                  ){ $conteo--;?>
-          <li class="list-group list-group-flush">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  Socialiser:   <?php echo $rowsTp["socialiser"] ?> %  
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="false" aria-controls="collapseOne">
-                    <i class="fas fa-angle-down"></i>
-                  </button>
-                </h5>
-              </div>
-
-              <div id="collapseOne2" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                  La motivación reside de manera fuerte en cualquiera de los tipos de interacción con los otros participantes, logrando compartir y socializar tanto progresos, temática, información o preferencias con respecto a su entorno.
-                  Se incluye en grupos de manera particular y le agrada participar de manera proactiva en actividades conformadas por equipos de trabajo.
-                </div>
-              </div>
-            </div>
-          </li>
-        <?php }else {  ?>
-          <li class="list-group-item">Socialiser:   <?php echo $rowsTp["socialiser"] ?> %  </li>
-        <?php }?>
-
-        <!-- Free spirit -->
-        <?php if (($max1 == "free_spirit" && $conteo > 0) ||
-                  ($max2 == "free_spirit" && $conteo > 0)
-                ){ $conteo--; ?>
-          <li class="list-group list-group-flush">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  Free Spirit:  <?php echo $rowsTp["free_spirit"] ?> %
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="false" aria-controls="collapseOne">
-                    <i class="fas fa-angle-down"></i>
-                  </button>
-                </h5>
-              </div>
-
-              <div id="collapseOne3" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                  Una gran motivación es agregada a las actividades que permitan desarrollar de manera creativa distintas habilidades y le permita ser autónomo, de tal forma, logra explorar de distintas maneras para moverse dentro de su entorno y llegar a su objetivo de forma innovadora.
-                  Podría verse involucrado en temáticas de desarrollo creativo con facilidad, demostrando un impulso a explorar nuevos caminos dentro de la dinámica.
-                </div>
-              </div>
-            </div>
-          </li>
-        <?php }else {  ?>
-          <li class="list-group-item">Free Spirit:  <?php echo $rowsTp["free_spirit"] ?> % </li>
-        <?php }?>
-
-         <!-- Achiever -->
-         <?php if (($max1 == "achiever" && $conteo > 0) ||
-                    ($max2 == "achiever" && $conteo > 0)
-                  ){ $conteo--; ?>
-          <li class="list-group list-group-flush">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  Achiever:     <?php echo $rowsTp["achiever"] ?> %   
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne4" aria-expanded="false" aria-controls="collapseOne">
-                    <i class="fas fa-angle-down"></i>
-                  </button>
-                </h5>
-              </div>
-
-              <div id="collapseOne4" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                  Sus intenciones y motivación se despiertan al intentar dominar distintas actividades u objetivos, constantemente se ve involucrado en acciones respectivas a el desarrollo de habilidades específicas, las cuales, con constancia se podrían masterizar, logrando niveles de eficacia y gran afinidad.
-                  Necesitan respectivamente, encontrar un reto constante, pues se ven poco involucrados en actividades que generen un desafío para su capacidad actual.	
-                </div>
-              </div>
-            </div>
-          </li>
-        <?php }else {  ?>
-          <li class="list-group-item">Achiever:     <?php echo $rowsTp["achiever"] ?> %    </li>
-        <?php }?>
-
-         <!-- Player -->
-         <?php if (($max1 == "player" && $conteo > 0) ||
-                    ($max2 == "player" && $conteo > 0)
-                    ){ $conteo--; ?>
-          <li class="list-group list-group-flush">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  Playe:        <?php echo $rowsTp["player"] ?> %  
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne5" aria-expanded="false" aria-controls="collapseOne">
-                    <i class="fas fa-angle-down"></i>
-                  </button>
-                </h5>
-              </div>
-
-              <div id="collapseOne5" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                  La motivación está focalizada dentro de la especificación de recibir recompensas y reconocimientos de cualquier tipo, sobretodo, aquellas recompensas que son mucho más visibles y evidentes.
-                  Su motivación, es inicialmente fuerte y perdura con respecto a la calidad de su recompensa dentro de sus gustos y valor perteneciente a su entorno.
-                </div>
-              </div>
-            </div>
-          </li>
-        <?php }else {  ?>
-          <li class="list-group-item">Playe:  <?php echo $rowsTp["player"] ?> %   </li>
-        <?php }?>
-
-         <!-- Disruptor -->
-         <?php if (($max1 == "disruptor" && $conteo > 0)||
-                    ($max2 == "disruptor" && $conteo > 0)
-                  ){ $conteo--; ?>
-          <li class="list-group list-group-flush">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  Disruptor:    <?php echo $rowsTp["disruptor"] ?> %    
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne6" aria-expanded="false" aria-controls="collapseOne">
-                    <i class="fas fa-angle-down"></i>
-                  </button>
-                </h5>
-              </div>
-
-              <div id="collapseOne6" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                  La motivación especial de este tipo de jugador, es generar un cambio dentro del sistema, una disrupción, generar un nuevo punto, sus motivaciones no van exactamente con participar con el sistema, por el contrario quieren generar nuevas maneras de realizar determinados objetivos sin pasar por el procedimiento generado por definición.
-                  En muchas ocasiones, son la mejor ayuda para encontrar nuevas puertas traseras y mejorar la implementación del sistema.
-                </div>
-              </div>
-            </div>
-          </li>
-        <?php }else {  ?>
-          <li class="list-group-item">Disruptor:    <?php echo $rowsTp["disruptor"] ?> %   </li>
-        <?php }?>
-        
-      </ul>
-
-    </div>
-  </div>
-  <script>
+<!-- script radial barchart -->
+<script>
     new Chart(document.getElementById("chartjs-3"),{
       type:"radar",
       data:{
@@ -524,10 +378,10 @@
                 '<?php echo $rowsTp["disruptor"] ?>'  
               ],
           fill:true,
-          backgroundColor:"rgba(72, 123, 170, 0.5 )",
+          backgroundColor:"rgba(72, 123, 170, 0.2 )",
           borderColor:"#6369D1",
           pointBackgroundColor:"#2D8C83",
-          pointBorderColor:"#fff",
+          pointBorderColor:"#ffAABB",
           pointHoverBackgroundColor:"#7BEDBA",
           pointHoverBorderColor:"#1AB3A6"
         }
@@ -556,6 +410,4 @@
           
         }
       }});
-  </script>
-
-</div>
+</script>

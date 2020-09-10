@@ -57,10 +57,7 @@
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" >
 
             <a class="navbar-brand" href="principal.php?action=inicio">Data Student</a>  <!-- se le coloca la pagina inicial-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle"   href="#" 
-            data-toggle="collapse" data-target="#sideNavAccordion" >
-                <i class="fas fa-bars"></i>
-            </button>
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
 
             
             <!-- Navbar-->
@@ -86,7 +83,7 @@
         <div id="layoutSidenav">
             
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sideNavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu" >
                         <div class="nav" >
 
@@ -177,7 +174,13 @@
         </div>
 
 
-        
-        
-    </body>
+         <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+        <script src="js/scripts.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script> -->
+        <!-- <script src="assets/demo/chart-area-demo.js"></script> -->
+        <!-- <script src="assets/demo/chart-bar-demo.js"></script> -->
+        <!-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script> -->
+        <!-- <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script> -->
+        <!-- <script src="assets/demo/datatables-demo.js"></script> -->
 </html>
