@@ -153,3 +153,6 @@ CREATE TABLE quiz_type_players_rs
     PRIMARY KEY (id_student),
     FOREIGN KEY (id_student) REFERENCES client(id_student)
 );
+
+INSERT INTO client (username, mail, passwrd, type_user) VALUES ( 'admin', 'manejodedatos2020@gmail.com', '123456789admin.', 1);
+
