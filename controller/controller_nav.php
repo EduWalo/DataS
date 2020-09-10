@@ -18,6 +18,8 @@ class MVController{
 				$contenido = "models/formGen.php";    
 			}else if($linkeded=="graphics"){
 				$contenido = "models/graphics.php";
+			}else if($linkeded=="options"){
+				$contenido = "models/options.php";
 			}
 			else {
 				echo "
@@ -41,11 +43,13 @@ class FormGenerator
 	public function generateTwoOptions($pregunta, $option1,$option2,$number){
 		
 		$code =
-		"<div class=\"card-header\">
-			<h5 class=\"card-title\">
-				$pregunta
-			</h5>
-		</div>";
+		"
+		<div class=\"card mb-2\">
+			<div class=\"card-header\">
+				<h5 class=\"card-title\">
+					$pregunta
+				</h5>
+			</div>";
 
 		if(isset($_POST["pregunta".$number])){
 			if($_POST["pregunta".$number] === "A"){
@@ -104,6 +108,8 @@ class FormGenerator
 				</div>
 			</div>";
 		}
+
+		$code =$code."</div>";
 		
 		//show question
 
@@ -121,12 +127,13 @@ class FormGenerator
 			"Totalmente en desacuerdo"
 		);
 		echo
-		"
-			<div class=\"card-header\">
-				<label>".$pregunta."</label>
-			</div>
-			<div class=\"card-body\" >
-				<select class=\"form-control col-lg-4\" name=\"p".$numero."\">
+		"<div class=\"card  mb-4\"> 
+			<div class=\"d-flex card-header\">
+				<div class=\" mr-auto p-2 \">
+					<label>".$pregunta."</label>
+				</div>
+				<div class=\"p-2\" >
+					<select class=\"form-control \" name=\"p".$numero."\">
 		";
 		for ($i=0; $i < 7; $i++) { 
 			echo "				<option value=\"".($i+1)."\"";
@@ -137,8 +144,10 @@ class FormGenerator
 		}
 		echo
 		"
-				</select>
+					</select>
+				</div>
 			</div>
+		</div>
 		";
 
 

@@ -59,7 +59,7 @@
     //this function allow know the value of points
     function getKnow($puntos, $equ, $modF){
       if($puntos <= 4){
-        return "Presenta una <strong>preferencia equilibro </strong> por las direccionamiento <i>".$equ."</i> aunque con una preferencia leve por un direccionamiento más ".$modF."<br>";
+        return "Presenta una <strong>preferencia equilibrada </strong> por las direccionamiento <i>".$equ."</i> aunque con una preferencia leve por un direccionamiento más ".$modF."<br>";
       }else if($puntos <= 8){
         return "Presenta una <strong>preferencia Moderada </strong>por un direccionamiento ".$modF.
         " así que puede que se le pueda facilitar el aprendizaje si se le brinda apoyo en esa dirección <br>";
@@ -84,12 +84,6 @@
     }else{
       $conteo = 1;
     }
-
-    
-    
-    
-    
-
     
     //set 
     $backg_b["perception"] = getcolor($rowsLs["perception_val"])["rgb"];
@@ -104,23 +98,127 @@
     $backg_b["understand"] = getcolor($rowsLs["understand_val"])["rgb"];
     $backg["understand"] = getcolor($rowsLs["understand_val"])["rgba"];
 
-    // -----------------------------------------------------------------------------
-    // var_dump($rowsTp);
+
 ?>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 
-<!-- barchar html -->
+  <!-- Pestañas de muestra -->
+<div class="mt-3 ml-n2 ">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-ls-tab" data-toggle="pill" href="#pills-ls" role="tab" aria-controls="pills-ls" aria-selected="true">Estilos de aprendizaje</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-tp-tab" data-toggle="pill" href="#pills-tp" role="tab" aria-controls="pills-tp" aria-selected="false">Perfiles de jugadors</a>
+    </li>
+  </ul>
+</div>
+
+
+
+
+<!-- contenido de las pestañas -->
+<div class="tab-content col-auto id="pills-tabContent">
+
+    <!-- Graficas estilos de aprendizaje  -->
+    <div class="tab-pane fade show active" id="pills-ls" role="tabpanel" aria-labelledby="pills-ls-tab">
+      <!-- graphic -->
+      <canvas  id="bar-chart"  class="chartjs-render-monitor" style=" width: 1100rem; height: 420rem;" ></canvas>
+      <!-- info -->
+
+      <div class="">
+        <h4 class="text-info"> Evaluación</h4>
+
+        <p class="card-tex lead">
+          Con respecto a las respuestas dadas para el test de <i> estilos de aprendizaje</i>, 
+          se pueden observar distintos rasgos cognitivos, que pueden indicar como tu perfil de estudiante te permite percibir, 
+          interactuar y responder a diferentes ambientes de aprendizaje; algunas de esas características que se pueden inferir para tu perfil como estudiante, por tus respuestas son: 
+        </p>
+
+        <dl class="blockquote">
+          <dt class="mt-4">¿Qué tipo de información perciben preferentemente los estudiantes?</dt>
+          <dd class="pl-4 ">
+            <?php 
+              echo getKnow($rowsLs["perception_val"]," Sensorial e Intuitiva ",$labelsLs["perception"]  );
+            ?>
+          </dd>
+
+          <dt class="mt-4">¿A través de qué modalidad sensorial es más efectivamente percibida la información cognitiva?</dt>
+          <dd class="pl-4">
+            <?php 
+              echo getKnow($rowsLs["input_val"]," Visual y Verbal ",$labelsLs["input"]  );
+            ?>
+          </dd>
+
+          <dt class="mt-4">¿Con qué tipo de organización de la información está más cómodo el estudiante a la hora de trabajar?</dt>
+          <dd class="pl-4">
+            <?php 
+              echo getKnow($rowsLs["processes_val"]," Activo y Reflectivo ",$labelsLs["processes"]  );
+            ?>
+          </dd>
+
+          <dt class="mt-4">¿Cómo progresa el estudiante en su aprendizaje?</dt>
+          <dd class="pl-4">
+            <?php 
+              echo getKnow($rowsLs["understand_val"]," Global y Secuencial ",$labelsLs["understand"]  );
+            ?>
+          </dd>
+
+          
+        </dl>
+        
+      </div>
+      
+
+
+      <div class="card shadow ">
+        
+        <div class="card-header "></div>
+        <div class="card-body">
+          
+
+
+        </div>
+        
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h5 class="card-title"></h5>
+          </li>
+          
+        </ul>
+        <div class="card-body">
+
+          <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <div class="card-text">
+            <?php
+              echo "<h6>Percepción: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["perception_val"]," Sensorial e Intuitiva ",$labelsLs["perception"]  )."</p>";
+              echo "<h6>Canal de entrada: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["input_val"]," Visual y Verbal ",$labelsLs["input"]  )."</p>";
+              echo "<h6>Proceso: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["processes_val"]," Activo y Reflectivo ",$labelsLs["processes"]  )."</p>";
+              echo "<h6>Entendimiento: </h6> <p style='padding-left:2em'>".getKnow($rowsLs["understand_val"]," Global y Secuencial ",$labelsLs["understand"]  )."</p>";
+            ?>  
+          </div>
+        </div>    
+      </div>
+    </div>
+
+    <!-- Graficas de tipos de jugador -->
+    <div class="tab-pane fade" id="pills-tp" role="tabpanel" aria-labelledby="pills-tp-tab">
+
+    </div>
+    
+  </div>
 
 
 <div class="row">
-
   <div class="col-xl-7 col-lg-2">
     <div class="card shadow mb-2 mt-2">
         <div class="card-header py-2">
-            <h6 class="m-1 font-weight-bold text-primary">Learn Styles</h6>
+            <h6 class="m-1 font-weight-bold text-primary">Estilos de aprendizaje  </h6>    
         </div>
         
         <div class="card-body">
@@ -201,7 +299,7 @@
         options: {
           legend: { display: false },
           title: {
-            display: true,
+            display: false,
             text: 'Estilos de aprendizaje'
           },
           scales: {
@@ -212,8 +310,17 @@
                   max: 11,
                   stepSize:1,
                   
+                  
               }
-            }]
+            }],
+            yAxes: [{
+              display: true,
+              ticks: {
+                
+                  
+              }
+            }],
+
           }
           
         }
@@ -442,16 +549,12 @@
           gridLines:{
             display: true
           },
-          
-          
           ticks: {
               suggestedMin: 0,
-              //suggestedMax: 100,
-              //sepSize: 25,
-              
-
           }
-      }
+          
+          
+        }
       }});
   </script>
 

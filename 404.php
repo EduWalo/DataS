@@ -20,7 +20,7 @@
                             <div class="col-lg-6">
                                 <div class="text-center mt-4">
                                     <img class="mb-4 img-error" src="assets/img/error-404-monochrome.svg" />
-                                    <p class="lead">Esta diracción no se encuentra disponible</p>
+                                    <p class="lead">Esta dirección no se encuentra disponible</p>
                                     <a href="index.php">
                                         <i class="fas fa-arrow-left mr-1"></i>
                                         volver al sitio de inicio.
@@ -36,11 +36,7 @@
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </footer>

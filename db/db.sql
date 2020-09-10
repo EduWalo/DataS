@@ -10,16 +10,25 @@ CREATE TABLE client
     type_user INT(1) NOT NULL
 );
 
+CREATE TABLE institution
+(
+    id_institut INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    ins_name VARCHAR(50) NOT NULL,
+    ins_description VARCHAR(50) 
+);
+
 CREATE TABLE quiz_general
 (
     id_student INT NOT NULL,
+    isntitucion VARCHAR(50),
     genero VARCHAR(10),
-    grado VARCHAR(10),
+    grado VARCHAR(20),
     r_edad VARCHAR(10),
     PRIMARY KEY (id_student),
     FOREIGN KEY (id_student) REFERENCES client(id_student)
 
 );
+
 
 CREATE TABLE plataform_rate
 (

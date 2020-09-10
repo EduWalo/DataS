@@ -1,6 +1,13 @@
 <?php
     require "controller/connection.php";
     
+    //SQL INSTITUTIONS
+    $sql_Select_inst= "SELECT * FROM institution";
+    //Execute the sql
+    $instituntes_res =  $mysqli->query($sql_Select_inst);
+
+
+
     
     #fsearch values in database for result
     $sql = "SELECT * FROM quiz_general WHERE id_student=".$_SESSION["id"];
@@ -44,9 +51,14 @@
                    $sql_geneal = 
                     "INSERT INTO quiz_general VALUES("
                     .$_SESSION["id"].","
+                    ."'".$_POST["pginstitute"]."'".","
                     ."'".$_POST["pgenero"]."'".","
                     ."'".$_POST["grado"]."'".","
                     ."'".$_POST["edad"]."'".");";
+
+                    
+
+                    
 
                     if($mysqli->query($sql_geneal)){
                         // direcition init
@@ -121,27 +133,20 @@
                         //redirecionar pagina
                         echo "
                         <script type=\"text/javascript\">
-                            window.location.href = \"principal.php?action=inicio\";
+                            window.location.href = \"principal.php?action=graphics\";
                         </script>
                         ";
 
-                        echo '<div class="alertB">',
-						"<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
-						'<strong>¡Cuidado!</strong> error con el server<br>',$mysqli->error,
-						'</div>'; 
+                     
 
                     }else {
                         echo '<div class="alertB">',
 						"<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
 						'<strong>¡Cuidado!</strong> error con el server<br>',$mysqli->error,
 						'</div>'; 
-                    }
+                    }                   
 
-                
-                
-                   
-
-            }else {
+            }   else {
                 echo 
                 '<div class="alertB ">',
                 "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
@@ -164,6 +169,45 @@
 
     <form name="F1" action="<?php echo "?action=gen"?>"  method="POST" >
         <div class="col-lg-auto  mb-2">
+            <div class="card mb-2">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        Institución de procedencia</h5>
+                    <h6 class="text-muted font-italic"> Seleccione la opción suministrada por el docente, en caso de no pertenecer a una institución, opte por la opción de 'Ninguna' </h6>
+                </div>        
+                <div class="card-body" >
+                    <?php
+                        if(isset($_POST["pginstitute"])){
+                            if($_POST["pginstitute"] === "Femenino"){
+                            }
+                        }
+                        
+                    ?>
+                    <select class="col-8 " name="pginstitute" id="pginstitute">
+                        <option value="Ninguna">Ninguna</option>
+                        <?php
+                            for ($i=0; $i < $instituntes_res->num_rows; $i++) { 
+                                //get data
+                                $instituntes_rows = $instituntes_res->fetch_assoc();
+                                //set option
+                                if(isset($_POST["pginstitute"])){
+                                    if($_POST["pginstitute"] == $instituntes_rows["ins_name"]){
+                                        $checkeded = "selected";
+                                    }else {
+                                        $checkeded = "";
+                                    }
+                                }
+                                echo "
+                                <option value=\"".$instituntes_rows["ins_name"]."\" ".$checkeded."> 
+                                ".$instituntes_rows["ins_name"]."
+                                </option>
+                                ";   
+                            }
+                        ?>
+
+                    </select>
+                </div>        
+            </div>
             
             <!-- pregunta  de genero-->
             <div class="card mb-2">
@@ -175,54 +219,54 @@
                 <div class="card-body" >
                     <?php
                         if(isset($_POST["pgenero"])){
-                        if($_POST["pgenero"] === "Femenino"){
-                            echo 
-                            "<div class=\"mb-2 custom-radio custom-control\">
-                                <input type=\"radio\" id=\"pg1\" name=\"pgenero\" class=\"custom-control-input\"
-                                value=\"Femenino\"
-                                checked>
-                                <label class=\"custom-control-label\" for=\"pg1\">Femenino</label>
-                            </div>";
-                        }else{
-                            echo 
-                            "<div class=\"mb-2 custom-radio custom-control\">
-                                <input type=\"radio\" id=\"pg1\" name=\"pgenero\" class=\"custom-control-input\"
-                                value=\"Femenino\">
-                                <label class=\"custom-control-label\" for=\"pg1\">Femenino</label>
-                            </div>";
-                        }
+                            if($_POST["pgenero"] === "Femenino"){
+                                echo 
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pg1\" name=\"pgenero\" class=\"custom-control-input\"
+                                    value=\"Femenino\"
+                                    checked>
+                                    <label class=\"custom-control-label\" for=\"pg1\">Femenino</label>
+                                </div>";
+                            }else{
+                                echo 
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pg1\" name=\"pgenero\" class=\"custom-control-input\"
+                                    value=\"Femenino\">
+                                    <label class=\"custom-control-label\" for=\"pg1\">Femenino</label>
+                                </div>";
+                            }
 
-                        if($_POST["pgenero"] === "Masculino"){
-                            echo 
-                            "<div class=\"mb-2 custom-radio custom-control\">
-                                <input type=\"radio\" id=\"pg2\" name=\"pgenero\" class=\"custom-control-input\"
-                                value=\"Masculino\" checked>
-                                <label class=\"custom-control-label\" for=\"pg2\">Masculino</label>
-                            </div>";
-                        }else{
-                            echo 
-                            "<div class=\"mb-2 custom-radio custom-control\">
-                                <input type=\"radio\" id=\"pg2\" name=\"pgenero\" class=\"custom-control-input\"
-                                value=\"Masculino\">
-                                <label class=\"custom-control-label\" for=\"pg2\">Masculino</label>
-                            </div>";
-                        }
+                            if($_POST["pgenero"] === "Masculino"){
+                                echo 
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pg2\" name=\"pgenero\" class=\"custom-control-input\"
+                                    value=\"Masculino\" checked>
+                                    <label class=\"custom-control-label\" for=\"pg2\">Masculino</label>
+                                </div>";
+                            }else{
+                                echo 
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pg2\" name=\"pgenero\" class=\"custom-control-input\"
+                                    value=\"Masculino\">
+                                    <label class=\"custom-control-label\" for=\"pg2\">Masculino</label>
+                                </div>";
+                            }
 
-                        if($_POST["pgenero"] === "NN"){
-                            echo 
-                            "<div class=\"mb-2 custom-radio custom-control\">
-                                <input type=\"radio\" id=\"pg5\" name=\"pgenero\" class=\"custom-control-input\"
-                                value=\"NN\" checked>
-                                <label class=\"custom-control-label\" for=\"pg5\">Prefiero no indicarlo</label>
-                            </div>";
-                        }else{
-                            echo 
-                            "<div class=\"mb-2 custom-radio custom-control\">
-                                <input type=\"radio\" id=\"pg5\" name=\"pgenero\" class=\"custom-control-input\"
-                                value=\"NN\">
-                                <label class=\"custom-control-label\" for=\"pg5\">Prefiero no indicarlo</label>
-                            </div>";
-                        }
+                            if($_POST["pgenero"] === "NN"){
+                                echo 
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pg5\" name=\"pgenero\" class=\"custom-control-input\"
+                                    value=\"NN\" checked>
+                                    <label class=\"custom-control-label\" for=\"pg5\">Prefiero no indicarlo</label>
+                                </div>";
+                            }else{
+                                echo 
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pg5\" name=\"pgenero\" class=\"custom-control-input\"
+                                    value=\"NN\">
+                                    <label class=\"custom-control-label\" for=\"pg5\">Prefiero no indicarlo</label>
+                                </div>";
+                            }
 
                         }else{	
                         echo 
@@ -328,6 +372,42 @@
                                 </div>";
                             }
 
+                            if($_POST["grado"] === "10" ){
+                                echo
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pgr6\" name=\"grado\" class=\"custom-control-input\"
+                                    value=\"10\" checked
+                                    onChange=\"habilitarSemstre();\">
+                                    <label class=\"custom-control-label\" for=\"pgr6\">10°</label>
+                                </div>";
+                            }else{
+                                echo
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pgr6\" name=\"grado\" class=\"custom-control-input\"
+                                    value=\"10\"
+                                    onChange=\"habilitarSemstre();\">
+                                    <label class=\"custom-control-label\" for=\"pgr6\">10°</label>
+                                </div>";
+                            }
+
+                            if($_POST["grado"] === "11" ){
+                                echo
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pgr7\" name=\"grado\" class=\"custom-control-input\"
+                                    value=\"11\" checked
+                                    onChange=\"habilitarSemstre();\">
+                                    <label class=\"custom-control-label\" for=\"pgr7\">11°</label>
+                                </div>";
+                            }else{
+                                echo
+                                "<div class=\"mb-2 custom-radio custom-control\">
+                                    <input type=\"radio\" id=\"pgr7\" name=\"grado\" class=\"custom-control-input\"
+                                    value=\"11\"
+                                    onChange=\"habilitarSemstre();\">
+                                    <label class=\"custom-control-label\" for=\"pgr7\">11°</label>
+                                </div>";
+                            }
+
                             // seleccion de semestre
                             if(substr( $_POST["grado"],0,1) === "S" ){
                                 // get text
@@ -372,6 +452,13 @@
                                         <option>3</option>
                                         <option>4</option>
                                         <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
                                     </select>
                                 </div>";
                             }
@@ -400,16 +487,32 @@
                                 <label class=\"custom-control-label\" for=\"pgr4\">9°</label>
                             </div>
                             <div class=\"mb-2 custom-radio custom-control\">
+                                <input type=\"radio\" id=\"pgr6\" name=\"grado\" class=\"custom-control-input\"
+                                value=\"10\" onChange=\"habilitarSemstre();\">
+                                <label class=\"custom-control-label\" for=\"pgr6\">10°</label>
+                            </div>
+                            <div class=\"mb-2 custom-radio custom-control\">
+                                <input type=\"radio\" id=\"pgr7\" name=\"grado\" class=\"custom-control-input\"
+                                value=\"11\" onChange=\"habilitarSemstre();\">
+                                <label class=\"custom-control-label\" for=\"pgr7\">11°</label>
+                            </div>
+                            <div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr5\" name=\"grado\" class=\"custom-control-input\"
                                 value=\"S\" onChange=\"habilitarSemstre();\" >
                                 <label class=\"custom-control-label\" for=\"pgr5\">Semestre </label>
-                                <input  />
                                 <select class=\"col-2 ml-4\" name=\"semestre\" id=\"boton\"  style=\"display:none\">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
                                     <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
                                 </select>
                             </div>";
                         }
