@@ -12,8 +12,9 @@
         (isset($_POST['password_conf']) && !empty($_POST['password_conf']));
 
         if($post){
-
-            if($_POST['password_conf'] == $_POST['password']){
+            
+            
+            if($_POST['password_conf'] === $_POST['password']){
         
                 // load data of form 
                 $usuario = $_POST['user'];
@@ -147,6 +148,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <?php
+                                            if($error == 1){
+                                                echo '<div class="alert">',
+                                                "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
+                                                '<strong>¡Error!</strong> Las contraseñas no coinciden',
+                                                '</div>';
+                                            }
+                                            ?>
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="custom-control-input" id="rm" onclick="showPassword('inputConfirmPassword')" type="checkbox" />
