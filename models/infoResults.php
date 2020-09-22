@@ -91,7 +91,7 @@
         <p class="card-text p-2">
           <ul>
           <li> Impulsad@ por un <i> Propósito </i> en particular </i>
-          <li> Requiere un propósito como motivación principal, siendo capaz de trabajar por esta sin esperar algo a cambio. </li>
+          <li> Requiere un propósito como motivación principal, siendo capaz de trabajar por él sin esperar algo a cambio. </li>
           <li> Puede ser de mucha ayuda para servir constructivamente y generar una experiencia positiva. </li>
           <li> Responde de manera motivada ante elementos de intercambio de conocimiento, tareas administrativas, roles de guía y actividades de comercio o colección. </li>
           </ul>
@@ -114,7 +114,7 @@
           <ul>
           <li>Impulsad@ por <i>Autonomía</i></li>
           <li>Requiere de un entorno que no limite las acciones de descubrimiento y exploración. </li>
-          <li>Puede ser de ayuda en contextos de navegación, creatividad e innovación, siendo capaces de ejercer buenos resultados mientras no exista un control externo que les impida percibir una libertad. </li>
+          <li>Puede ser de ayuda en contextos de navegación, creatividad e innovación, aportando buenos resultados mientras no exista un control externo que les impida percibir una libertad. </li>
           <li>Responde continuamente a los estímulos de exploración, personalización, contenido desbloqueable y sorpresas. </li>
           </ul>
         </p>',
@@ -137,7 +137,7 @@
           <li>Impulsad@ por las <i>Recompensas</i> </li>
           <li>Requiere de una recompensa a cambio de realizar las tareas propuestas. </li>
           <li>Se mantiene el interés siempre y cuando la recompensa sea de su agrado o despierte su curiosidad. </li>
-          <li>Responde de manera comprometida con aquellas actividades, sin importar el tipo de la misma, que conlleve un premio, reconocimiento, puntuación o ganancia. </li>
+          <li>Responde de manera comprometida con cualquier actividad propuesta que conlleve un premio, reconocimiento, puntuación o ganancia. </li>
           </ul>
         </p>',
       
@@ -315,7 +315,7 @@
       <div class="card-header">
         <h5>Escala de motivaciones </h5>
         <h6 class="card-subtitle mb-2 text-muted"> 
-        Encontrar ordenadas de manera descendente aquellas descripciones de las motivaciones, desde la más importante a la que menos puede generar un impacto importante, partiendo desde el perfil de jugador inferido por las respuestas al test de Perfiles de Jugadores 
+        Encontrarás ordenadas de manera descendente aquellas descripciones de las motivaciones, desde la más importante a la que menos puede generar un impacto importante, partiendo desde el perfil de jugador inferido por las respuestas al test de Perfiles de Jugadores 
         </h6>
       </div>
       <div class="card-body">
