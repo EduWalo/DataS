@@ -163,9 +163,9 @@
 							'Solo pienso y reflexiono sobre ello constantemente.',
 							1);
 						$fg->generateTwoOptions(
-							'2. ¿Qué tipo de enfoque puedes utilizar más a menudo para analizar un problema?:',
-							'Realista:<br> Eres una persona más realista con respecto a la situación e intentas buscar soluciones a partir de lo puedes visualizar',
-							'Innovador:<br> Eres una persona más innovadora, pensando en las distintas soluciones que podrías llegar a generar para solucionar el problema,',
+							'2. ¿Qué tipo de enfoque puedes utilizar más a menudo para analizar un problema?',
+							'Realista:<br> Eres una persona más realista con respecto a la situación e intentas buscar soluciones a partir de lo puedes visualizar.',
+							'Innovador:<br> Eres una persona más innovadora, pensando en las distintas soluciones que podrías llegar a generar para solucionar el problema.',
 							2);
 						$fg->generateTwoOptions(
 							'3. Cuando piensas en lo que hiciste el día anterior, lo haces basándote en:',
@@ -174,43 +174,43 @@
 							3);
 						$fg->generateTwoOptions(
 							'4. En el instante en el que entiendes algo lo haces:',
-							'Entendiendo los detalles de un tema pero no viendo su estructura completa',
-							'Entendiendo la estructura completa del tema pero no viendo claramente los detalles',
+							'Entendiendo los detalles de un tema pero no viendo su estructura completa.',
+							'Entendiendo la estructura completa del tema pero no viendo claramente los detalles.',
 							4);
 						$fg->generateTwoOptions(
 							'5. Cuando intentas aprender algo nuevo, te ayuda:',
-							'Hablar o debatir de ello con otras personas',
-							'Pensar en ello y reflexionar sobre el tema',
+							'Hablar o debatir de ello con otras personas.',
+							'Pensar en ello y reflexionar sobre el tema.',
 							5);
 						$fg->generateTwoOptions(
 							'6. Si fueses un profesor, preferirías dar un curso:',
-							'Que trate más sobre hechos y situaciones reales de la vida',
-							'Que trate con ideas y teorías',
+							'Que trate más sobre hechos y situaciones reales de la vida.',
+							'Que trate con ideas y teorías.',
 							6);
 						$fg->generateTwoOptions(
 							'7. Prefiero obtener información nueva por medio de:',
-							'Imágenes, diagramas, gráficas o mapas',
-							'Instrucciones escritas o información verbal',
+							'Imágenes, diagramas, gráficas o mapas.',
+							'Instrucciones escritas o información verbal.',
 							7);
 						$fg->generateTwoOptions(
 							'8. ¿De qué maneras logras entender mejor un tema?:',
-							'Entiendo primero cada una de sus partes y luego su totalidad',
-							'Comprendo su estructura total y luego como encajan sus partes',
+							'Entiendo primero cada una de sus partes y luego su totalidad.',
+							'Comprendo su estructura total y luego como encajan sus partes.',
 							8);
 						$fg->generateTwoOptions(
 							'9. En un grupo de estudio que trabaja con un material difícil, es más probable que mi actitud sea:',
-							'Participar y contribuir con ideas para llegar a una solución ',
-							'No participar y solo escuchar para aclarar mis ideas',
+							'Participar y contribuir con ideas para llegar a una solución.',
+							'No participar y solo escuchar para aclarar mis ideas.',
 							9);
 						$fg->generateTwoOptions(
 							'10. Se me facilita más Aprender mediante:',
-							'El uso de hechos, acciones y prácticas. ',
-							'El uso de Teoría y conceptos. ',
+							'El uso de hechos, acciones y prácticas.',
+							'El uso de Teoría y conceptos.',
 							10);
 						$fg->generateTwoOptions(
 							'11. En un libro con muchas imágenes y gráficas es más probable que:',
-							'Me enfoque más en revisar cuidadosamente las imágenes y las gráficas',
-							'Me enfoque mas en leer todo el texto y el contenido escrito',
+							'Me enfoque más en revisar cuidadosamente las imágenes y las gráficas.',
+							'Me enfoque mas en leer todo el texto y el contenido escrito.',
 							11);
 					?>
 				</div>
@@ -218,28 +218,28 @@
 					<?php
 						$fg->generateTwoOptions(
 							'12. Cuando resuelvo problemas de matemáticas:',
-							'IGeneralmente trabajo sobre soluciones con un paso a la vezmágenes',
-							'Frecuentemente sé cuales son las soluciones, pero luego tengo dificultad para imaginarme los pasos para llegar a ellas',
+							'Generalmente trabajo sobre soluciones con un paso a la vezmágenes.',
+							'Frecuentemente sé cuales son las soluciones, pero luego tengo dificultad para imaginarme los pasos para llegar a ellas.',
 							12);
 						$fg->generateTwoOptions(
 							'13. En las clases a las que has asistido, la relación con los otros estudiantes le permite saber: ',
-							'Cómo es la actitud de muchos de los compañeros. ',
-							'Cómo es la actitud de algunos pocos compañeros. ',
+							'Cómo es la actitud de muchos de los compañeros.',
+							'Cómo es la actitud de algunos pocos compañeros.',
 							13);
 						$fg->generateTwoOptions(
 							'14. Cuando leo temas que no son de ficción, prefiero:',
-							'Algo que me enseñe nuevos hechos o me diga como hacer algo',
-							'Algo que me dé nuevas ideas para pensar y me motive a imaginar',
+							'Algo que me enseñe nuevos hechos o me diga como hacer algo.',
+							'Algo que me dé nuevas ideas para pensar y me motive a imaginar.',
 							14);
 						$fg->generateTwoOptions(
 							'15. Me agrada más cuando un maestro:',
-							'Utilizan muchos esquemas y dibujos en el tablero para explicar el tema',
-							'Toman mucho tiempo en la explicando dialogando acerca del tema',
+							'Utiliza muchos esquemas y dibujos en el tablero para explicar el tema.',
+							'Toman mucho tiempo en la explicando dialogando acerca del tema.',
 							15);
 						$fg->generateTwoOptions(
 							'16. Cuando estoy analizando un cuento, una novela o texto narrativo, sucede que:',
-							'Pienso en los incidentes y trato de acomodarlos para estructurar los temas',
-							'Me doy cuenta de cuáles son los temas cuando termino de leer y luego tengo que regresar y encontrar los incidentes que los demuestran',
+							'Pienso en los incidentes y trato de acomodarlos para estructurar los temas.',
+							'Me doy cuenta de cuáles son los temas cuando termino de leer y luego tengo que regresar y encontrar los incidentes que los demuestran.',
 							16);
 						$fg->generateTwoOptions(
 							'17. Cuando comienzo a resolver un problema dentro de alguna tarea, es más probable que:',
@@ -248,30 +248,30 @@
 							17);
 						$fg->generateTwoOptions(
 							'18. Prefiero las ideas basadas en: ',
-							'La certeza, concreto o correcto, estando estructuradas en conocimientos previos, claros y seguros de algo.  <br>
+							'La certeza, concreto o correcto, estando estructuradas en conocimientos previos, claros y seguros de algo.<br>
 							<i> Se que esa idea tiene una base que es correcta o estoy segur@ de que es cierta o no es falsa. </i>',
 							'La teoría, que están estructuradas en diferentes pensamientos y conjeturas acerca de algo. <br>
-							<i> Se que esta idea está pensada desde alguna manera innovadora, pero podría no ser cierta </i>',
+							<i> Se que esta idea está pensada desde alguna manera innovadora, pero podría no ser cierta. </i>',
 							18);
 						$fg->generateTwoOptions(
 							'19. Recuerdo mejor:',
-							'Las cosas que veo',
-							'Las cosas que oigo',
+							'Las cosas que veo.',
+							'Las cosas que oigo.',
 							19);
 						$fg->generateTwoOptions(
-							'20. Es más importante para mí que un la persona encargade de enseñarme:',
-							'Exponga el material en pasos secuenciales y claros',
-							'Me dé un panorama general y relacione el material con otros temas',
+							'20. Es más importante para mí que un persona encargade de enseñarme:',
+							'Exponga el material en pasos secuenciales y claros.',
+							'Me dé un panorama general y relacione el material con otros temas.',
 							20);
 						$fg->generateTwoOptions(
 							'21. Prefiero estudiar de manera:',
-							'Grupal (un grupo de estudio)',
-							'Individual (apartado de los grupos de estudio)',
+							'Grupal (un grupo de estudio).',
+							'Individual (apartado de los grupos de estudio).',
 							21);
 						$fg->generateTwoOptions(
 							'22. Me considero una persona:',
-							'Cuidadoso en los detalles al realizar mi trabajo',
-							'Creativo en la manera en la que realizo mi trabajo',
+							'Cuidados@ en los detalles al realizar mi trabajo.',
+							'Creativ@ en la manera en la que realizo mi trabajo.',
 							22);
 					?>
 				</div>
@@ -279,43 +279,43 @@
 					<?php
 						$fg->generateTwoOptions(
 							'23. Cuando alguien me da direcciones de nuevos lugares, prefiero hacer use de:',
-							'Un mapa o diagrama',
-							'Instrucciones escritas',
+							'Un mapa o diagrama.',
+							'Instrucciones escritas.',
 							23);
 						$fg->generateTwoOptions(
 							'24. Aprendo de manera:',
-							'Constante, si estudio con empeño consigo lo deseado',
-							'Con pausas y reinicios, me llego a confundir muchas veces pero de un momento a otro lo entiendo',
+							'Constante, si estudio con empeño consigo lo deseado.',
+							'Con pausas y reinicios, me llego a confundir muchas veces pero de un momento a otro lo entiendo.',
 							24);
 						$fg->generateTwoOptions(
 							'25. Prefiero primero:',
-							'Hacer algo y ver que sucede luego',
-							'Pensar como voy a hacer algo antes de actuar',
+							'Hacer algo y ver que sucede luego.',
+							'Pensar como voy a hacer algo antes de actuar.',
 							25);
 						$fg->generateTwoOptions(
 							'26. Cuando leo por diversión, me agradan más los escritores que: ',
-							'Dicen claramente lo que desean dar a entender',
-							'Dicen las cosas en forma creativa e interesantes',
+							'Dicen claramente lo que desean dar a entender.',
+							'Dicen las cosas en forma creativa e interesantes.',
 							26);
 						$fg->generateTwoOptions(
 							'Cuando veo un esquema, mapa, diagrama, dibujo o bosquejo en clase para la explicación de un tema, es más probable que de él recuerde:',
-							'Las imágenes que lo componen',
-							'Lo que el profesor dijo acerca del mismo',
+							'Las imágenes que lo componen.',
+							'Lo que el profesor dijo acerca del mismo.',
 							27);
 						$fg->generateTwoOptions(
 							'28. Cuando intento aprender un nuevo tema:', 
-							'Me concentro en los detalles y paso por alto la estructura total de la temática', 
-							'Trato de entender el todo antes de concentrarme en los detalles de la temática', 
+							'Me concentro en los detalles y paso por alto la estructura total de la temática.', 
+							'Trato de entender el todo antes de concentrarme en los detalles de la temática.', 
 							28);
 						$fg->generateTwoOptions(
 							'29. Recuerdo más fácilmente:', 
-							'Las cosas que hago', 
-							'Las cosas en las que he pensado mucho', 
+							'Las cosas que hago.', 
+							'Las cosas en las que he pensado mucho.', 
 							29);
 						$fg->generateTwoOptions(
 							'30. Cuando tengo un trabajo o tarea por hacer, prefiero:',
-							'Intentar dominar una manera de hacerlo',
-							'Intentar nuevas formas de hacerlo',
+							'Intentar dominar una manera de hacerlo.',
+							'Intentar nuevas formas de hacerlo.',
 							30);
 						$fg->generateTwoOptions(
 							'31. Cuando alguien quiere mostrarte datos, prefieres que:',
@@ -328,7 +328,7 @@
 							'En distintas partes y luego las ordene para darles sentido.',
 							32);
 						$fg->generateTwoOptions(
-							'33. Cuando tengo que trabajar en un proyecto de grupalmente o debo trabajar en equipo, primero quiero:',
+							'33. Cuando tengo que trabajar en un proyecto grupalmente o debo trabajar en equipo, primero quiero:',
 							'Realizar una "Lluvia de ideas" donde cada integrante aporta o ayuda con su opinión.',
 							'Realizar una "Lluvia de ideas" de manera individual y luego revisarlas y llegar a un acuerdo.',
 							33);
@@ -338,53 +338,53 @@
 					<?php
 						$fg->generateTwoOptions(
 							'34. Considero que es más agradable ser:' , 
-							'Una persona sensible', 
-							'Una persona innovadora', 
+							'Una persona sensible.', 
+							'Una persona innovadora.', 
 							34);
 						$fg->generateTwoOptions(
 							'35. Cuando conozco gente en una fiesta, es probable que recuerde:',
-							'Cómo es su apariencia',
-							'Lo que dicen de sí mismos',
+							'Cómo es su apariencia.',
+							'Lo que dicen de sí mismos.',
 							35);
 						$fg->generateTwoOptions(
 							'36. Cuando estoy aprendiendo un tema, prefiero:',
-							'Mantenerme concentrado en ese tema, aprendiendo lo más que se pueda de él',
-							'Hacer conexiones entre ese tema y otros temas relacionados',
+							'Mantenerme concentrado en ese tema, aprendiendo lo más que se pueda de él.',
+							'Hacer conexiones entre ese tema y otros temas relacionados.',
 							36);
 						$fg->generateTwoOptions(
 							'37. Me considero un ser:',
-							'Abierto con mis ideas y sentimientos',
-							'Reservado con mis ideas y sentimientos',
+							'Abierto con mis ideas y sentimientos.',
+							'Reservado con mis ideas y sentimientos.',
 							37);
 						$fg->generateTwoOptions(
 							'38. Prefiero cursos, materias o áreas que dan más importancia a:',
-							'Material y contenido concreto (hechos, datos)',
-							'Material y contenido abstracto (conceptos, teoría)',
+							'Material y contenido concreto (hechos, datos).',
+							'Material y contenido abstracto (conceptos, teoría).',
 							38);
 						$fg->generateTwoOptions(
 							'39. Para divertirme prefiero:', 
-							'Ver televisión, ver videos o series', 
-							'Leer un libro, textos, historietas, comics u otro tipo de contenido escrito o con imágenes plasmadas ', 
+							'Ver televisión, ver videos o series.', 
+							'Leer un libro, textos, historietas, comics u otro tipo de contenido escrito o con imágenes plasmadas.', 
 							39);
 						$fg->generateTwoOptions(
 							'40. Algunos profesores inician sus clases haciendo una lista, bosquejos o esquemas de lo que enseñan, este contenido para ti puede ser:',
-							'Algo útiles',
-							'Algo muy útiles',
+							'Algo útiles.',
+							'Algo muy útiles.',
 							40);
 						$fg->generateTwoOptions(
 							'41. La idea de hacer un trabajo grupal con una sola calificación para todos:',
-							'Me parece bien o justa',
-							'No me parece bien o injusta',
+							'Me parece justa.',
+							'Me parece injusta.',
 							41);
 						$fg->generateTwoOptions(
 							'42. Cuando realizo cálculos grandes, trabajos complejos o largos:',
-							'Tiendo a repetir todos mis pasos para revisar cuidadosamente mi trabajo',
-							'Me cansa hacer su revisión y tengo que esforzarme para hacerlo',
+							'Tiendo a repetir todos mis pasos para revisar cuidadosamente mi trabajo.',
+							'Me cansa hacer su revisión y tengo que esforzarme para hacerlo.',
 							42);
 						$fg->generateTwoOptions(
 							'43. Tiendo a recordar lugares en los que he estado:',
-							'Con facilidad y con bastante exactitud',
-							'Con dificultad y sin mucho detalle',
+							'Con facilidad y con bastante exactitud.',
+							'Con dificultad y sin mucho detalle.',
 							43);
 						$fg->generateTwoOptions(
 							'44. Cuando resuelvo problemas en grupo, es más probable que yo:', 

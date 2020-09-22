@@ -173,7 +173,7 @@
                 <div class="card-header">
                     <h5 class="card-title">
                         Institución de procedencia</h5>
-                    <h6 class="text-muted font-italic"> Seleccione la opción suministrada por el docente, en caso de no pertenecer a una institución, opte por la opción de 'Ninguna' </h6>
+                    <h6 class="text-muted font-italic"> Seleccione la opción suministrada por el docente, en caso de no pertenecer a una institución, opte por la opción de 'Ninguna'. </h6>
                 </div>        
                 <div class="card-body" >
                     <?php
@@ -213,7 +213,7 @@
             <div class="card mb-2">
 
                 <div class="card-header">
-                    <h5 class="card-title">Género</h5>
+                    <h5 class="card-title">Género.</h5>
                 </div>
 
                 <div class="card-body" >
@@ -294,7 +294,7 @@
             <!-- GRADO -->
             <div class="card mb-2">
                 <div class="card-header">
-                    <h5 class="card-title">Grado o periodo académico que actualemnte cursa</h5>
+                    <h5 class="card-title">Grado o periodo académico que actualemnte cursa.</h5>
                 </div>
                 <div class="card-body" >
 
@@ -524,7 +524,7 @@
             <!-- EDAD -->
             <div class="card mb-2">
                 <div class="card-header">
-                    <h5 class="card-title">Rango de edad</h5>
+                    <h5 class="card-title">Rango de edad.</h5>
                 </div>
                 <div class="card-body" ">
                     <?php
@@ -619,7 +619,7 @@
                             ";
                         }
                     ?>
-                </div>Semestre
+                </div>
             </div>
 
             <!-- PLATAFORMAS -->
@@ -627,9 +627,9 @@
             <div class="card mb-2">
                 <div class="card-header">
                     <h5 class="card-title">
-                    Con que redes sociales y/o herramientas se asocia más frecuentemente
+                    ¿Con que redes sociales y/o herramientas se asocia más frecuentemente?
                     </h5>
-                    <h6><i>Seleccione varias opciones con las cuales se identifique de manera más fuerte</i></h6>
+                    <h6><i>Seleccione varias opciones con las cuales se identifique de manera más fuerte.</i></h6>
                     
                 </div>
                 <div class="card-body" >

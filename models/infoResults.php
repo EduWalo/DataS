@@ -62,10 +62,10 @@
         return "Presenta una <strong>preferencia equilibrada </strong> por las direccionamiento <i>".$equ."</i> aunque con una preferencia leve por un direccionamiento más ".$modF."<br>";
       }else if($puntos <= 8){
         return "Presenta una <strong>preferencia Moderada </strong>por un direccionamiento ".$modF.
-        " así que puede que se le pueda facilitar el aprendizaje si se le brinda apoyo en esa dirección <br>";
+        " así que se le puede facilitar el aprendizaje si se le brinda apoyo en esa dirección <br>";
       }else {
         return "Presenta una <strong>preferencia fuerte </strong>por un direccionamiento ".$modF.
-        " así que puede que se puede que se dificulte para aprender en ambientes que no cuenten con apoyo en esa dirección <br>";
+        " así que puede que se dificulte la tarea de aprender si no se le brinda apoyo en esa dirección <br>";
       }
       
     }
@@ -87,61 +87,68 @@
     //tratamiento
     
     $motivacionesTP = array(
-      "philanthrop" => '<h6 class=" card-subtitle">Componente Filántropo: <i> Propósito </i></h6>
+      "philanthrop" => '<h6 class=" card-subtitle">Componente Filántropo: </h6>
         <p class="card-text p-2">
-          Requiere un propósito como motivación principal, siendo capaz de trabajar por esta sin esperar algo a cambio. 
-          <br>
-          Puede ser de mucha ayuda para servir constructivamente y generar una experiencia positiva. 
-          <br>
-          Responde de manera motivada ante elementos de intercambio de conocimiento, tareas administrativas, roles de guía y actividades de comercio o colección. 
+          <ul>
+          <li> Impulsad@ por un <i> Propósito </i> en particular </i>
+          <li> Requiere un propósito como motivación principal, siendo capaz de trabajar por esta sin esperar algo a cambio. </li>
+          <li> Puede ser de mucha ayuda para servir constructivamente y generar una experiencia positiva. </li>
+          <li> Responde de manera motivada ante elementos de intercambio de conocimiento, tareas administrativas, roles de guía y actividades de comercio o colección. </li>
+          </ul>
         </p>',
 
       "socialiser" =>
-        '<h6 class=" card-subtitle">Componente Socializador:  <i>Relaciones Interpersonales </i></h6>
+        '<h6 class=" card-subtitle">Componente Socializador:  </h6>
         <p class="card-text p-2">
-          Requiere de un entorno que les permita gene   rar distintas conexiones interpersonales con los demás participantes. 
-          <br>
-          Es visto muy motivado dentro de los entornos en donde se pueda interactuar con otros y crear conexiones sociales, respondiendo a estímulos y actividades elaboradas para desarrollarse de manera grupal. 
-          <br>
-          Responde de manera positiva ante actividades que se definan en entornos de trabajo en equipo o agrupaciones, gremios, etc. 
+          <ul>
+          <li>Impulsad@ por las <i>Relaciones Interpersonales </i></li>
+          <li>Requiere de un entorno que les permita generar distintas conexiones interpersonales con los demás participantes. </li>
+          <li>Es visto muy motivado dentro de los entornos en donde se pueda interactuar con otros y crear conexiones sociales, respondiendo a estímulos y actividades elaboradas para desarrollarse de manera grupal. </li>
+          <li>Responde de manera positiva ante actividades que se definan en entornos de trabajo en equipo o agrupaciones, gremios, etc. </li>
+          </ul>
         </p>',
 
       "free_spirit" => 
-        '<h6 class=" card-subtitle">Componente Espíritu Libre: <i>Autonomía</i> </h6>
+        '<h6 class=" card-subtitle">Componente Espíritu Libre:  </h6>
         <p class="card-text p-2">
-          Requiere de un entorno que no limite las acciones de descubrimiento y exploración. 
-          <br>
-          Puede ser de ayuda en contextos de navegación, creatividad e innovación, siendo capaces de ejercer buenos resultados mientras no exista un control externo que les impida percibir una libertad. 
-          <br>
-          Responde continuamente a los estímulos de exploración, personalización, contenido desbloqueable y sorpresas. 
+          <ul>
+          <li>Impulsad@ por <i>Autonomía</i></li>
+          <li>Requiere de un entorno que no limite las acciones de descubrimiento y exploración. </li>
+          <li>Puede ser de ayuda en contextos de navegación, creatividad e innovación, siendo capaces de ejercer buenos resultados mientras no exista un control externo que les impida percibir una libertad. </li>
+          <li>Responde continuamente a los estímulos de exploración, personalización, contenido desbloqueable y sorpresas. </li>
+          </ul>
         </p>',
 
       "achiever" =>
-        '<h6 class=" card-subtitle">Componentes Triunfador: <i>Competencia </i></h6>
+        '<h6 class=" card-subtitle">Componentes Triunfador: </h6>
         <p class="card-text p-2">
-          Requiere un entorno competitivo, en donde se recompense sus logros con tareas que parezcan un reto, no solo con la complejidad de la tarea si no con la dificultad que presenta ante sus habilidades. 
-          <br>
-          Es capaz de completar tareas que requieran niveles de habilidades específicos para desarrollarlas. 
-          <br>
-          Responde de manera activa dentro de actividades que representen desafíos, donde sea capaz de medir su progreso, requieran del aprendizaje de nuevas habilidades. 
+          <ul>
+          <li>Impulsad@ por la <i>Competencia </i></li>
+          <li>Requiere un entorno competitivo, en donde se recompense sus logros con tareas que parezcan un reto, no solo con la complejidad de la tarea si no con la dificultad que presenta ante sus habilidades. </li>
+          <li>Es capaz de completar tareas que requieran niveles de habilidades específicos para desarrollarlas. </li>
+          <li>Responde de manera activa dentro de actividades que representen desafíos, donde sea capaz de medir su progreso, requieran del aprendizaje de nuevas habilidades. </li>
+          </ul>
         </p>',
       
       "player" => 
-        '<h6 class=" card-subtitle">Componente Jugador: <i>Recompensas</i> </h6>
+        '<h6 class=" card-subtitle">Componente Jugador: </h6>
         <p class="card-text p-2">
-          Requiere de una recompensa a cambio de realizar las tareas propuestas. 
-          <br>
-          Se mantiene el interés siempre y cuando la recompensa sea de su agrado o despierte su curiosidad. 
-          <br>
-          Responde de manera comprometida con aquellas actividades, sin importar el tipo de la misma, que conlleve un premio, reconocimiento, puntuación o ganancia. 
+          <ul>
+          <li>Impulsad@ por las <i>Recompensas</i> </li>
+          <li>Requiere de una recompensa a cambio de realizar las tareas propuestas. </li>
+          <li>Se mantiene el interés siempre y cuando la recompensa sea de su agrado o despierte su curiosidad. </li>
+          <li>Responde de manera comprometida con aquellas actividades, sin importar el tipo de la misma, que conlleve un premio, reconocimiento, puntuación o ganancia. </li>
+          </ul>
         </p>',
       
       "disruptor" => 
         '<h6 class=" card-subtitle"> Componente Disruptor: <i>Cambio</i>  </h6>
         <p class="card-text p-2">
-          No requieren un entorno específico para que entren a ejercer sus intereses, pues su motivación está en impulsar un cambio dentro del sistema planteado, colocando sus límites a prueba y forzando nuevas opciones. 
-          <br>
-          Presta una gran ayuda para determinar la consistencia en las actividades empleadas y muchas veces para generar cambios positivos o innovadores. 
+          <ul>
+          <li>Impulsad@ por el<i>Cambio</i> </li>
+          <li>No requieren un entorno específico para que entren a ejercer sus intereses, pues su motivación está en impulsar un cambio dentro del sistema planteado, colocando sus límites a prueba y forzando nuevas opciones. </li>
+          <li>Presta una gran ayuda para determinar la consistencia en las actividades empleadas y muchas veces para generar cambios positivos o innovadores. </li>
+          </ul>
         </p>'
     );
 
@@ -176,7 +183,7 @@
       <a class="nav-link active" id="pills-ls-tab" data-toggle="pill" href="#pills-ls" role="tab" aria-controls="pills-ls" aria-selected="true">Estilos de aprendizaje</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="pills-tp-tab" data-toggle="pill" href="#pills-tp" role="tab" aria-controls="pills-tp" aria-selected="false">Perfiles de jugadors</a>
+      <a class="nav-link" id="pills-tp-tab" data-toggle="pill" href="#pills-tp" role="tab" aria-controls="pills-tp" aria-selected="false">Perfiles de jugadores</a>
     </li>
   </ul>
 </div>
@@ -202,28 +209,28 @@
       </p>
 
       <dl class="blockquote">
-        <dt class="mt-4">¿Qué tipo de información perciben preferentemente los estudiantes?</dt>
+        <dt class="mt-4 font-italic">¿Qué tipo de información perciben preferentemente los estudiantes?</dt>
         <dd class="pl-4 ">
           <?php 
             echo getKnow($rowsLs["perception_val"]," Sensorial e Intuitiva ",$labelsLs["perception"]  );
           ?>
         </dd>
 
-        <dt class="mt-4">¿A través de qué modalidad sensorial es más efectivamente percibida la información cognitiva?</dt>
+        <dt class="mt-4 font-italic">¿A través de qué modalidad sensorial es más efectivamente percibida la información cognitiva?</dt>
         <dd class="pl-4">
           <?php 
             echo getKnow($rowsLs["input_val"]," Visual y Verbal ",$labelsLs["input"]  );
           ?>
         </dd>
 
-        <dt class="mt-4">¿Con qué tipo de organización de la información está más cómodo el estudiante a la hora de trabajar?</dt>
+        <dt class="mt-4 font-italic">¿Con qué tipo de organización de la información está más cómodo el estudiante a la hora de trabajar?</dt>
         <dd class="pl-4">
           <?php 
-            echo getKnow($rowsLs["processes_val"]," Activo y Reflectivo ",$labelsLs["processes"]  );
+            echo getKnow($rowsLs["processes_val"]," Activo y Reflexivo ",$labelsLs["processes"]  );
           ?>
         </dd>
 
-        <dt class="mt-4">¿Cómo progresa el estudiante en su aprendizaje?</dt>
+        <dt class="mt-4 font-italic">¿Cómo progresa el estudiante en su aprendizaje?</dt>
         <dd class="pl-4">
           <?php 
             echo getKnow($rowsLs["understand_val"]," Global y Secuencial ",$labelsLs["understand"]  );
@@ -236,33 +243,69 @@
   <!-- Graficas de tipos de jugador -->
   <div class="tab-pane fade" id="pills-tp" role="tabpanel" aria-labelledby="pills-tp-tab">
     <div class="row align-items-center"">
-      <div class="col-12 col-md-6" >
+      <div class="col-12 col-md-6 m-2" >
         <canvas id="chartjs-3"  class="chartjs-render-monitor b-2" ></canvas>
       </div>
-      <div class="col-10 col-md-6" >
-        <ul class="list-group list-group-flush">
+      <div class="col-10 col-md-4" >
+        <ul class="list-group list-group-flush text-center">
           <li class="list-group-item">
-            Componente Filántropo :  <?php echo $rowsTp["philanthrop"]; ?> %
+              <?php
+                if(max($rowsTp) == $rowsTp["philanthrop"]){echo "<strong>";}
+              ?>
+             Filántropo :  <?php echo round( $rowsTp["philanthrop"] ,3);?> %
+             <?php
+                if(max($rowsTp) == $rowsTp["philanthrop"]){echo "</strong>";}
+              ?>
           </li>
 
           <li class="list-group-item">
-            Componente Socializador :   <?php echo $rowsTp["socialiser"]; ?> %
+              <?php
+                if(max($rowsTp) == $rowsTp["socialiser"]){echo "<strong>";}
+              ?>
+             Socializador :   <?php echo round( $rowsTp["socialiser"] ,3); ?> %
+             <?php
+                if(max($rowsTp) == $rowsTp["socialiser"]){echo "</strong>";}
+              ?>
           </li>
 
           <li class="list-group-item">
-            Componente Espíritu Libre :  <?php echo $rowsTp["free_spirit"]; ?> %
+              <?php
+                if(max($rowsTp) == $rowsTp["free_spirit"]){echo "<strong>";}
+              ?>
+             Espíritu Libre :  <?php echo round( $rowsTp["free_spirit"] ,3); ?> %
+             <?php
+                if(max($rowsTp) == $rowsTp["free_spirit"]){echo "<strong>";}
+              ?>
           </li>
 
           <li class="list-group-item">
-            Componentes Triunfador :   <?php echo $rowsTp["achiever"]; ?> %
+              <?php
+                if(max($rowsTp) == $rowsTp["achiever"]){echo "<strong>";}
+              ?>
+             Triunfador :   <?php echo round( $rowsTp["achiever"] ,3); ?> %
+             <?php
+                if(max($rowsTp) == $rowsTp["achiever"]){echo "<strong>";}
+              ?>
           </li>
 
           <li class="list-group-item">
-            Componente Jugador :  <?php echo $rowsTp["player"]; ?> %
+              <?php
+                if(max($rowsTp) == $rowsTp["player"]){echo "<strong>";}
+              ?>
+             Jugador :  <?php echo round( $rowsTp["player"],3); ?> %
+             <?php
+                if(max($rowsTp) == $rowsTp["player"]){echo "<strong>";}
+              ?>
           </li>
 
           <li class="list-group-item">
-            Componente Disruptor : <?php echo $rowsTp["disruptor"]; ?> %    
+              <?php
+                if(max($rowsTp) == $rowsTp["disruptor"]){echo "<strong>";}
+              ?>
+             Disruptor : <?php echo round( $rowsTp["disruptor"] ,3); ?> %    
+             <?php
+                if(max($rowsTp) == $rowsTp["disruptor"]){echo "<strong>";}
+              ?>
           </li>
         </ul>
       </div>
@@ -366,16 +409,16 @@
     new Chart(document.getElementById("chartjs-3"),{
       type:"radar",
       data:{
-        labels:["Philanthrop","Socialiser","Free Spirit","Achiever","Player","Disruptor"],
+        labels:["Filántropo ","Socializador ","Espíritu Libre","Triunfador ","Jugador ","Disruptor "],
         datasets:[{
           label:"Procentaje",
           data: [ 
-                '<?php echo $rowsTp["philanthrop"] ?>' ,
-                '<?php echo $rowsTp["socialiser"] ?>' ,
-                '<?php echo $rowsTp["free_spirit"] ?>' ,
-                '<?php echo $rowsTp["achiever"] ?>',
-                '<?php echo $rowsTp["player"] ?>', 
-                '<?php echo $rowsTp["disruptor"] ?>'  
+                '<?php echo round($rowsTp["philanthrop"],3) ?>' ,
+                '<?php echo round($rowsTp["socialiser"] ,3)?>' ,
+                '<?php echo round($rowsTp["free_spirit"] ,3)?>' ,
+                '<?php echo round($rowsTp["achiever"] ,3)?>',
+                '<?php echo round($rowsTp["player"] ,3)?>', 
+                '<?php echo round( $rowsTp["disruptor"] ,3)?>'  
               ],
           fill:true,
           backgroundColor:"rgba(72, 123, 170, 0.2 )",

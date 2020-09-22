@@ -78,7 +78,7 @@
 
     <div class="header col-lg-8" >
         <h1 class="page-header-title" >Encuesta para: Tipos de jugador  </h1>
-        Lea cada una de las afirmaciones descritas a continuación y seleccione que tan de acuerdo está con esa, selecciones la opción de agrado según esta se adapte a su perfil personal, no hay respuestas correctas o incorrectas, solo se quiere evaluar su opinión. 
+        Lea cada una de las afirmaciones descritas a continuación y seleccione que tan de acuerdo está con cada una de ellas, cabe aclarar que no hay respuestas correctas o incorrectas, solo se quiere evaluar su opinión. 
         <br>
         <br>
     </div>
@@ -117,7 +117,7 @@
                     <!-- Disruptor -->
                         <?php $fg->generateSelect("17. Me gusta provocar a las demás personas.",17);?>
                         <?php $fg->generateSelect("18. Me gusta cuestionar el porque cosas.",18);?>
-                        <?php $fg->generateSelect("19. Me describo a mí mismo como un rebelde.",19);?>
+                        <?php $fg->generateSelect("19. Me describo a mí mism@ como un rebelde.",19);?>
                         <?php $fg->generateSelect("20. No me gusta seguir las reglas.",20);?>
                     <!-- Player -->
                         <?php $fg->generateSelect("21. Me gustan las competiciones en las que se pueda ganar un premio.",21);?>

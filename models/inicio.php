@@ -134,7 +134,7 @@
                             </div>
                         </div>
 
-                        <div class=" col-xl-12 mb-4">  
+                        <!-- <div class=" col-xl-12 mb-4">  
                             <div class="card lift h-100">
                                 <div class="card-header">
                                     <h5>¿Cómo prefiere el estudiante procesar la información?</h5>
@@ -149,7 +149,8 @@
                                     </dl>  
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+
                     </div>
                 </div>
             </div>

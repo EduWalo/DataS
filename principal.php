@@ -1,5 +1,6 @@
 <?php
     require "controller/controller_nav.php";
+    require "controller/connection.php";
     require_once 'controller/dompdf/autoload.inc.php';
     session_start();
 
@@ -11,6 +12,42 @@
     $type_user = $_SESSION['type_user'];
 
     $getor_de_contenido= new MVController();
+
+    // load optios --------------------------------------------
+    // consult the existence or results
+
+    // sql consulta general
+    $sqlGenOption= "SELECT * FROM quiz_general WHERE id_student =".$_SESSION["id"];
+
+    // sql consulta learn styles
+    $sqlLsOption = "SELECT * FROM quiz_learn_styles_rs WHERE id_student =".$_SESSION["id"];
+
+    // sql consulta to player's type
+    $sqlTpOption = "SELECT * FROM quiz_type_players_rs WHERE id_student =".$_SESSION["id"];
+
+	//resultados de consulta
+    $resultadoGen = $mysqli->query($sqlGenOption);
+    $resultadoLs = $mysqli->query($sqlLsOption);
+    $resultadoTp = $mysqli->query($sqlTpOption);
+
+    
+    if($resultadoGen->num_rows > 0){
+        $genTestOption = false; // not abiable general test
+    }else {
+        $genTestOption = true; // abiable general test
+    }
+
+    if($resultadoLs->num_rows > 0){
+        $lstTestOption = false; // not abiable general test
+    }else {
+        $lstTestOption = true; // abiable general test
+    }
+
+    if($resultadoTp->num_rows > 0){
+        $tpTestOption = false; // not abiable general test
+    }else {
+        $tpTestOption = true; // abiable general test
+    }
 
     
 ?>
@@ -95,13 +132,15 @@
                                 Inicio
                             </a>
 
+                            <!-- OPCIONES DE ADMIN  --------------------------------- -->
                             <?php if ($type_user == 1){?>
                             <a class="nav-link" href="principal.php?action=options">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
                                 Opciones
                             </a>
                             <?php  }?>
-                            
+
+                            <!--RESULTADOS DE ENCUESTAS  --------------------------------- -->
                             <?php if ($type_user == 0){?>
                             <a class="nav-link" href="principal.php?action=graphics">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
@@ -109,23 +148,44 @@
                             </a>
                             <?php  }?>
 
-                            <div class="sb-sidenav-menu-heading">Encuestas</div><!-- titulo divisor-->
-                            
-                           <!-- Encuestas -->
-                           <a class="nav-link" href="principal.php?action=gen">
-                                <div class="sb-nav-link-icon"><i class="fa fa-globe"></i></div>
-                                Test de Información General
-                            </a>
-                            <a class="nav-link" href="principal.php?action=frmls">
-                                <div class="sb-nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
-                                Test de Estilos de Aprendizaje
-                            </a>
-                            <a class="nav-link" href="principal.php?action=frmtp">
-                                <div class="sb-nav-link-icon"><i class="fa fa-gamepad"></i></div>
-                                Test de Perfiles de Jugadores
+                            <!-- ENCUESTAS  --------------------------------- -->
+                            <?php if ($type_user == 0){?>
+                                <?php if(($genTestOption || $lstTestOption ) || $tpTestOption){?>
+                                    <div class="sb-sidenav-menu-heading">Encuestas</div><!-- titulo divisor-->
+                                <?php  }?>
+
+                                <?php if($genTestOption ){?>
+                                <!-- Encuestas -->
+                                <a class="nav-link" href="principal.php?action=gen">
+                                    <div class="sb-nav-link-icon"><i class="fa fa-globe"></i></div>
+                                    Test de Información General
+                                </a>
+                                <?php  }?>
+
+                                <?php if($lstTestOption ){?>
+                                <a class="nav-link" href="principal.php?action=frmls">
+                                    <div class="sb-nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
+                                    Test de Estilos de Aprendizaje
+                                </a>
+                                <?php  }?>
+
+                                <?php if($tpTestOption ){?>
+                                <a class="nav-link" href="principal.php?action=frmtp">
+                                    <div class="sb-nav-link-icon"><i class="fa fa-gamepad"></i></div>
+                                    Test de Perfiles de Jugadores
+                                </a>
+                                <?php  }?>
+                            <?php  }?>
+
+                            <!-- CONSULTAS  --------------------------------- -->
+                            <?php if ($type_user == 1){?>
+                            <div class="sb-sidenav-menu-heading">Consultas</div>
+                            <a class="nav-link" href="principal.php?action=consultas">
+                                <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
+                                Conultas Generales
                             </a>
 
-                            
+                            <?php  }?>
                         </div>
                     </div>
 
