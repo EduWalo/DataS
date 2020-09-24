@@ -236,6 +236,19 @@
                                     </p>
                                 </div>
                             </div>
+                             <!-- Triunfadores (disruptive): les -->
+                             <div class="card">
+                                <img class="card-img-top" src="models/img/Ultimate/master.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Triunfadores (archivers): </h5>
+                                    <p class="card-text text-muted">
+                                        les motiva el dominio de distintas habilidades que representen un retos, buscan el máximo nivel de maestría en lo que hacen, quieren mejorar siempre.
+                                        <br>
+                                        Son los mejores en alcanzar objetivos que requieren la adquisición de habilidades o alcanzar determinados logros. 
+                                    </p>
+                                </div>
+                            </div>
+
 
                         </div>
                         
