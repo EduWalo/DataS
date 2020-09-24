@@ -20,6 +20,10 @@ class MVController{
 				$contenido = "models/graphics.php";
 			}else if($linkeded=="options"){
 				$contenido = "models/options.php";
+			}else if($linkeded=="consultasG"){
+				$contenido = "models/consultasG.php";
+			}else if($linkeded=="consultasE"){
+				$contenido = "models/consultasE.php";
 			}
 			else {
 				echo "

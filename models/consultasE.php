@@ -1,5 +1,47 @@
 <?php
     require "controller/connection.php";
+    // consult the institutes
+    $instituteOptions =  $mysqli->query("SELECT isntitucion FROM `quiz_general` WHERE isntitucion != 'Ninguna';");
+
+    if(isset($_POST["institutionFilter"])){
+        if($_POST["institutionFilter"] == 'Ninguna'){
+            $selectNinguna = true;
+        }else {
+            $selectNinguna = false;
+        }
+    }else {
+        $selectNinguna = false;
+    }
+
+
+    //filtrer option
+    if(isset($_POST["institutionFilter"])){
+        if($_POST["institutionFilter"] != 'Todas'){
+            $whereandOption = "AND quiz_general.isntitucion = '".$_POST["institutionFilter"]."' ";
+        }else { 
+            $whereandOption="";
+        }
+    }else {
+        $whereandOption ="";
+    }
+
+    $usersQuest = $mysqli->query("SELECT client.id_student, client.username, client.mail, quiz_general.isntitucion FROM client INNER JOIN quiz_general ON client.id_student = quiz_general.id_student WHERE type_user != 1 $whereandOption");
+    
+    
+
+    if(isset($_POST["id_student"])){
+        if (strlen ($_POST["id_student"])){
+            $whereandOptionSelect =  "WHERE id_student = ".$_POST["id_student"];
+        }else {
+            $whereandOptionSelect ="";
+        }
+    }else {
+        $whereandOptionSelect  ="";
+    }
+
+    
+    $resultadoLs = $mysqli->query("SELECT * FROM quiz_learn_styles_rs $whereandOptionSelect");
+    $resultadoTp = $mysqli->query("SELECT * FROM quiz_type_players_rs $whereandOptionSelect");
 
     $rowsLs = $resultadoLs->fetch_assoc();
     $rowsTp = $resultadoTp->fetch_assoc();
@@ -167,10 +209,101 @@
         echo $motivacionesTPI[$maxIndex];
       }
     }
-
-   
-
 ?>
+
+
+
+
+<!-- formulario de control y filtros-->
+<div class="row">
+    <!-- fistros -->
+    <form name="formInstTable" action="<?php echo "?action=consultasE"?>"  method="POST" >
+        <div class="form-group">
+            <div class="card mb-4 " >
+                <div class="d-flex card-header">
+                    <div class="mr-auto p-2">
+                        <label >Filtro de institución</label>        
+                    </div>
+                    <div class=" p-2">
+                        <select class="form-control" name="institutionFilter">
+                            <option value="Todas">Todas</option>
+                            <?php if($selectNinguna){?>
+                                    <option value="Ninguna" selected >Ninguna</option>
+                            <?php } else {?>
+                                <option value="Ninguna"  >Ninguna</option>
+                            <?php } ?>
+                            
+                            <?php
+                                for ($i=0; $i < $instituteOptions; $i++) { 
+                                    //get data
+                                    $instituto = $instituteOptions->fetch_assoc();
+                                    //set option
+                                    if(isset($_POST["institutionFilter"])){
+                                        if($_POST["institutionFilter"] == $instituto["isntitucion"] ){
+                                            $select = "selected";
+                                        }else {
+                                            $select = "";
+                                        }
+                                    }
+
+                                    echo "
+                                    <option value=\"".$instituto["isntitucion"]."\" ".$select.">
+                                    ".$instituto["isntitucion"]."
+                                    </option>
+                                    ";
+                                    
+                                }
+                            ?>
+                        </select>      
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="idConsult" name="id_student" ">
+            <button type="submit" class="btn btn-primary">Filtrar</a>
+        </div>
+    </form>
+
+
+</div>
+<!-- tabla -->
+<div class="row">
+    <div class="col-md-12">
+        <table id="tableUsers" class="table table-striped table-bordered dataTable" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>institución</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <?php for($i =0; $i<$usersQuest->num_rows;$i++){
+                        $usr = $usersQuest->fetch_assoc();
+                    ?>
+                    <tr>
+                        <td><?php echo $usr["id_student"];?></td>
+                        <td><?php echo $usr["username"]?></td>
+                        <td><?php echo $usr["mail"]?></td>
+                        <td><?php echo $usr["isntitucion"]?></td>
+                    </tr>
+                <?php }?>
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>User</th>
+                    <th>Correo</th>
+                    <th>institución</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -453,4 +586,20 @@
           
         }
       }});
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        var table = $('#tableUsers').DataTable( {
+            select: true
+        } );
+
+        $('#tableUsers tbody').on( 'click', 'tr', function () {
+            //console.log( (table.row( this ).data())[0 ]);
+            $("#idConsult").val((table.row( this ).data())[0 ]);
+            
+        } )
+    } );
+    
 </script>

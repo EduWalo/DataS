@@ -49,6 +49,13 @@
         $tpTestOption = true; // abiable general test
     }
 
+    if((($genTestOption && $lstTestOption) && $tpTestOption)&& $type_user == 0){
+        //modal 
+        $modalLaunch = true;
+    }else {
+        $modalLaunch = false;
+    }
+
     
 ?>
 
@@ -70,6 +77,8 @@
         <link href="css/personalStyles.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
@@ -81,6 +90,14 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+        
+        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap.min.css">
+    
         
 
     </head>
@@ -179,11 +196,16 @@
 
                             <!-- CONSULTAS  --------------------------------- -->
                             <?php if ($type_user == 1){?>
-                            <div class="sb-sidenav-menu-heading">Consultas</div>
-                            <a class="nav-link" href="principal.php?action=consultas">
-                                <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
-                                Conultas Generales
-                            </a>
+                                <div class="sb-sidenav-menu-heading">Consultas</div>
+                                <a class="nav-link" href="principal.php?action=consultasG">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
+                                    Conultas Generales
+                                </a>
+                                <a class="nav-link" href="principal.php?action=consultasE">
+                                    <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                                    Consulta especifica  
+                                </a>
+                                
 
                             <?php  }?>
                         </div>
@@ -210,6 +232,38 @@
                 <!-- contenido -->
                 <main>
                     <div class="container-fluid " style="background-color: #EEF1F9">
+
+                        <?php  if($modalLaunch){ ?>
+                           
+                            <!-- Modal -->
+                            <div class="modal fade " id="modalCondition"   role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Terminos y condiciones</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Por favor diligencie los siguientes formularios. La información recopilada a través de este formulario está enmarcada bajo el cumplimiento de la Ley Estatutaria 1581 de 2012 y será utilizada solo con fines académicos para analizar dentro del desarrollo de una propuesta de investigación doctoral dentro de la Universidad del Valle. 
+                                            En caso de tener alguna duda o solicitud puntual por favor enviar un correo a: 
+                                            <a href="mailto:yuri.bermudez@correounivalle.edu.co?Subject=Consulta%20de%20plataforma "> yuri.bermudez@correounivalle.edu.co  </a>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a type="button" class="btn btn-secondary" href="logout.php">No aceptar</a>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                $('#modalCondition').modal('show');
+                            </script>
+                        <?php } ?>
+                        
+
+
                         
                         <?php
                         //gestor de contenido 

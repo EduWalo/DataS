@@ -32,7 +32,7 @@
             $new_description = $_POST["ins-desc"];
             // delete  sql
             $sqlInsert = "INSERT INTO institution (ins_name, ins_description) VALUES ('$new_name', '$new_description')";
-            var_dump($sqlInsert);
+            
             $mysqli->query($sqlInsert);
             
         }
