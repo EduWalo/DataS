@@ -273,7 +273,7 @@
             <!-- header -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">
-                    Useo de plataformas 
+                    Uso de plataformas 
                 </h6>
             </div>
             <!-- body -->
@@ -386,12 +386,16 @@
                 displayColors: false,
                 caretPadding: 10,
             },
+            
             legend: {
                 display: true,
                 position: 'bottom',
                 labels:{
                     boxWidth: 10,
                     padding: 20
+                },
+                generateLabels: function(val){
+                    alert(val);
                 }
             },
             cutoutPercentage: 80,
@@ -473,14 +477,14 @@
                 yPadding: 15,
                 displayColors: false,
                 caretPadding: 10,
-                position: 'nearest',
-
-                
-                
+                position: 'nearest',                
                
-            }
+            },
         }
     });
+
+    
+    
 </script>
 
 <!-- EDADES -->
