@@ -219,7 +219,6 @@
     <!-- fistros -->
     <script>
 	$(document).ready(function() {
-	$(document).ready(function() {
 	  $('#institution').on('change', function() {
 		 document.formInstTable.submit();
 	  });
