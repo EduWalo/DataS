@@ -219,9 +219,9 @@
     <!-- fistros -->
     <script>
 	$(document).ready(function() {
+	$(document).ready(function() {
 	  $('#institution').on('change', function() {
-		var $form = $(this).closest('form');
-		$form.find('input[type=submit]').click();
+		 document.formInstTable.submit();
 	  });
 	});
     </script>
