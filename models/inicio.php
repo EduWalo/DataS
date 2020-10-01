@@ -163,11 +163,7 @@
                         <h6> <i>Modelo propuesto por Andrzej Marczewski. </i></h6>
                         <div class="card-body">
                             <p class="blockquote text-justify">
-                                Las personas tienen diferentes formas de divertirnos y generar interés con respecto a diferentes actividades, por ello existen distintos autores que generan alguna clasificación a los jugadores con respecto a estas preferencias.
-                                <br>
-                                Algunas de estas cosas que atraen a las personas son:  el ganar, el trabajar en equipo, el resolver problemas, explorar distintas maneras, recolectar nuevas cosas, aprender, socializar, imaginar y crear, cumplir un rol, compartir experiencias, entre otra cantidad de actividades que motivan continuar con las actividades planteadas en la dinámica.
-                                <br>
-                                Con esto en contexto, se pueden encontrar diferentes tipos de perfiles para estos jugadores pero en este caso se opta por el modelo planteado por Marczewski el cual a identificado distintos perfiles de jugadores, tales como:
+								Marczewski propuso un modelo de seis tipos de usuario Hexad que se diferencian por el grado de motivación que pueden tener, ya sea intrínseca (por ejemplo, la autorrealización) o extrínseca (por ejemplo, las recompensas). A continuación se describe cada tipo de jugador indicando su motivación principal para jugar y divertirse: 
                             </p>
                         </div>
 
@@ -181,8 +177,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Jugadores (players):</h5>
                                     <p class="card-text text-muted">
-                                        Les motiva las recompensas y el reconocimiento.
-                                        <br>
+										Motivados por Recompensas extrínsecas
+                                       <br>
                                         Por esta razón les agrada mucho conseguir diferentes logros y que se les reconozca estos mismos abiertamente y por medio de diferentes recompensas.
                                     </p>
                                 </div>
