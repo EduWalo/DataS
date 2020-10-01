@@ -220,7 +220,8 @@
     <script>
 	$(document).ready(function() {
 	  $('#institution').on('change', function() {
-		 document.forms[formInstTable].submit();
+		var $form = $(this).closest('form');
+		$form.find('input[type=submit]').click();
 	  });
 	});
     </script>
