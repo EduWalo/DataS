@@ -217,6 +217,13 @@
 <!-- formulario de control y filtros-->
 <div class="row">
     <!-- fistros -->
+    <script>
+	$(document).ready(function() {
+	  $('#institution').on('change', function() {
+		 document.forms[formInstTable].submit();
+	  });
+	});
+    </script>
     <form name="formInstTable" action="<?php echo "?action=consultasE"?>"  method="POST" >
         <div class="form-group">
             <div class="card mb-4 " >
@@ -225,7 +232,7 @@
                         <label >Filtro de institución</label>        
                     </div>
                     <div class=" p-2">
-                        <select class="form-control" name="institutionFilter">
+                        <select id="institution" class="form-control" name="institutionFilter">
                             <option value="Todas">Todas</option>
                             <?php if($selectNinguna){?>
                                     <option value="Ninguna" selected >Ninguna</option>
@@ -259,7 +266,7 @@
                 </div>
             </div>
             <input type="hidden" id="idConsult" name="id_student" ">
-            <button type="submit" class="btn btn-primary">Filtrar</a>
+            <!--<button type="submit" class="btn btn-primary">Filtrar</a>!-->
         </div>
     </form>
 
@@ -334,12 +341,21 @@
     <!-- info -->
 
     <div class="">
-      <h4 class="text-info"> Evaluación</h4>
+      <!--<h4 class="text-info"> Evaluación</h4>
       <p class="card-tex lead">
         Con respecto a las respuestas dadas para el test de <i> estilos de aprendizaje</i>, 
         se pueden observar distintos rasgos cognitivos, que pueden indicar como tu perfil de estudiante te permite percibir, 
         interactuar y responder a diferentes ambientes de aprendizaje; algunas de esas características que se pueden inferir para tu perfil como estudiante, por tus respuestas son: 
       </p>
+	-->
+	<h4 class="text-info"> Análisis</h4>
+      <p class="card-tex lead">
+       Para realizar el análisis de las respuestas al test de estilos de aprendizaje de Felder y Silverman se deben considerar las siguientes escalas:<br/>
+		Si su puntaje en la escala está entre 1 - 3 usted presenta una <strong>preferencia equilibrada</strong> entre los dos extremos de los estilos de aprendizaje de esa dimensión.. Significa que de cualquier forma se le facilita el aprendizaje. Sin embargo, se puede presentar una <strong>preferencia muy leve</strong> por alguno de los estilos de aprendizaje.<br/>
+		Si su puntaje está entre 5 - 7 usted presenta una <strong>preferencia moderada</strong> hacia uno de los dos extremos de los estilos de aprendizaje de esa dimensión y aprenderá más fácilmente si se le brindan apoyos relacionados con ese estilo de aprendizaje. <br/>
+		Si su puntaje en la escala está entre 9 - 11 usted presenta una <strong>preferencia muy fuerte</strong> por uno de los dos extremos de los estilos de aprendizaje de esa dimensión. Usted puede llegar a presentar dificultades para aprender en un ambiente en el cual no cuente con apoyo relacionado con ese estilo de aprendizaje.<br/>
+		A continuación se indica el significado de los resultados obtenidos en cada dimensión de aprendizaje de acuerdo a las respuestas que usted brindó en el test de estilos de aprendizaje:
+      </p>	
 
       <dl class="blockquote">
         <dt class="mt-4 font-italic">¿Qué tipo de información perciben preferentemente los estudiantes?</dt>
@@ -448,7 +464,7 @@
       <div class="card-header">
         <h5>Escala de motivaciones </h5>
         <h6 class="card-subtitle mb-2 text-muted"> 
-        Encontrarás ordenadas de manera descendente aquellas descripciones de las motivaciones, desde la más importante a la que menos puede generar un impacto importante, partiendo desde el perfil de jugador inferido por las respuestas al test de Perfiles de Jugadores 
+        Encontrarás ordenadas de manera descendente aquellas descripciones de las motivaciones, desde la más importante a la que menos puede generar un impacto importante, partiendo desde el perfil de jugador inferido por las respuestas al test de Perfiles de Jugadores.
         </h6>
       </div>
       <div class="card-body">

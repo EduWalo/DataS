@@ -166,6 +166,13 @@
 
 <!-- formulario de control y filtros-->
 <div class="row">
+    <script>
+	$(document).ready(function() {
+	  $('#institution').on('change', function() {
+		 document.forms[formInstTable].submit();
+	  });
+	});
+    </script>
     <!-- fistros -->
     <form name="FconsultaGen" action="<?php echo "?action=consultasG"?>"  method="POST" >
         <div class="form-group">
@@ -175,7 +182,7 @@
                         <label >Filtro de institución</label>        
                     </div>
                     <div class=" p-2">
-                        <select class="form-control" name="institutionFilter">
+                        <select id="institution" class="form-control" name="institutionFilter">
                             <option value="Todas">Todas</option>
                             <?php if($selectNinguna){?>
                                     <option value="Ninguna" selected >Ninguna</option>
@@ -208,7 +215,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Filtrar</a>
+            <!--<button type="submit" class="btn btn-primary">Filtrar</a>-->
         </div>
     </form>
 
