@@ -56,11 +56,11 @@
                                 <p class="mb-0 ">
 								El modelo de Felder-Silverman clasifica preferencias de aprendizaje de los estudiantes en una de las categorías en cada una de las siguientes cuatro dimensiones de estilo de aprendizaje: sensitivo o intuitivo, visual o verbal, activo o reflexivo, secuencial o global. Tal como se muestra a continuación:
                                 </p>
-                                <footer class="blockquote-footer">
+                                <!--<footer class="blockquote-footer">
                                     <cite >
                                         Keefe, J. W. (1987). Learning Style Theory and Practice. National Association of Secondary School Principals, 1904 Association Dr., Reston, VA 22091.
                                     </cite>
-                                </footer>
+                                </footer>-->
                             </blockquote>                            
                         </div>
 
