@@ -34,14 +34,14 @@
                     <div class="col-lg-6 d-none d-lg-block aos-init " data-aos="fade-up" data-aos-delay="500">
                         <img src="models/img/welcome.png"  height="400" width="533">
                     </div> 
-					<footer class="blockquote-footer">
+					<!-- <footer class="blockquote-footer">
 						<p>
 							Por favor diligencie el siguiente formulario. La información recopilada a través de este formulario está enmarcada dentro del desarrollo de una propuesta de investigación doctoral de un estudiante de doctorado en Ingeniería de la Universidad del Valle y será utilizada únicamente con fines académicos.
 						</p>
 						<p>
 						En caso de tener alguna duda o solicitud puntual por favor enviar un correo a: <a href="mailto:yuri.bermudez@correounivalle.edu.co">yuri.bermudez@correounivalle.edu.co </a>  
 						</p>
-					</footer> 
+					</footer>  -->
                 </div>
             </div>
 

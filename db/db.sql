@@ -13,7 +13,7 @@ CREATE TABLE client
 CREATE TABLE institution
 (
     id_institut INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    ins_name VARCHAR(50) NOT NULL,
+    ins_name TEXT NOT NULL,
     ins_description VARCHAR(50) 
 );
 

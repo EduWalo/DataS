@@ -199,7 +199,7 @@
                                 <div class="sb-sidenav-menu-heading">Consultas</div>
                                 <a class="nav-link" href="principal.php?action=consultasG">
                                     <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
-                                    Conultas Generales
+                                    Consultas Generales
                                 </a>
                                 <a class="nav-link" href="principal.php?action=consultasE">
                                     <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
@@ -213,7 +213,7 @@
 
                     <!-- footer -->
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
+                        <div class="small">Ingresaste como:</div>
                         <!-- Start Bootstrap -->
                         <?php
                             if($type_user == 0){

@@ -294,7 +294,8 @@
             <!-- GRADO -->
             <div class="card mb-2">
                 <div class="card-header">
-                    <h5 class="card-title">Grado o periodo académico que actualemnte cursa.</h5>
+                    <h5 class="card-title">Grado o semestre de pregrado segun corresponda que curse actualemente</h5>
+                    <h6 class="text-muted font-italic"> Nota: seleccione de 6° a 11° si corresponde a educación secundaria o la opción de semestre indicando el actualmente cursado si se encuentra en educación superior.</h6>
                 </div>
                 <div class="card-body" >
 
@@ -306,7 +307,7 @@
                                     <input type=\"radio\" id=\"pgr1\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"6\" checked 
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr1\">6°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr1\">6° de secundaria</label>
                                 </div>";
                             }else{
                                 echo
@@ -314,7 +315,7 @@
                                     <input type=\"radio\" id=\"pgr1\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"6\"
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr1\">6°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr1\">6° de secundaria</label>
                                 </div>";
                             }
 
@@ -324,7 +325,7 @@
                                     <input type=\"radio\" id=\"pgr2\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"7\" checked
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr2\">7°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr2\">7° de secundaria</label>
                                 </div>";
                             }else{
                                 echo
@@ -332,7 +333,7 @@
                                     <input type=\"radio\" id=\"pgr2\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"7\"
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr2\">7°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr2\">7° de secundaria</label>
                                 </div>";
                             }
 
@@ -342,7 +343,7 @@
                                     <input type=\"radio\" id=\"pgr3\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"8\" checked
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr3\">8°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr3\">8° de secundaria</label>
                                 </div>";
                             }else{
                                 echo
@@ -350,7 +351,7 @@
                                     <input type=\"radio\" id=\"pgr3\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"8\"
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr3\">8°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr3\">8° de secundaria</label>
                                 </div>";
                             }
 
@@ -360,7 +361,7 @@
                                     <input type=\"radio\" id=\"pgr4\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"9\" checked
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr4\">9°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr4\">9° de secundaria</label>
                                 </div>";
                             }else{
                                 echo
@@ -368,7 +369,7 @@
                                     <input type=\"radio\" id=\"pgr4\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"9\"
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr4\">9°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr4\">9° de secundaria</label>
                                 </div>";
                             }
 
@@ -378,7 +379,7 @@
                                     <input type=\"radio\" id=\"pgr6\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"10\" checked
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr6\">10°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr6\">10° de secundaria</label>
                                 </div>";
                             }else{
                                 echo
@@ -386,7 +387,7 @@
                                     <input type=\"radio\" id=\"pgr6\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"10\"
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr6\">10°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr6\">10° de secundaria</label>
                                 </div>";
                             }
 
@@ -396,7 +397,7 @@
                                     <input type=\"radio\" id=\"pgr7\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"11\" checked
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr7\">11°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr7\">11° de secundaria</label>
                                 </div>";
                             }else{
                                 echo
@@ -404,7 +405,7 @@
                                     <input type=\"radio\" id=\"pgr7\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"11\"
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr7\">11°</label>
+                                    <label class=\"custom-control-label\" for=\"pgr7\">11° de secundaria</label>
                                 </div>";
                             }
 
@@ -421,7 +422,7 @@
                                     <input type=\"radio\" id=\"pgr5\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"S\" checked
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr5\">Semestre </label>
+                                    <label class=\"custom-control-label\" for=\"pgr5\">Semestre (educación superior)</label>
                                     
                                     <select class=\"col-2 ml-4\" name=\"semestre\" id=\"boton\"  style=\"display:\"  >
                                         <option $selectpr[1]>1</option>
@@ -445,7 +446,7 @@
                                     <input type=\"radio\" id=\"pgr5\" name=\"grado\" class=\"custom-control-input\"
                                     value=\"S\"
                                     onChange=\"habilitarSemstre();\">
-                                    <label class=\"custom-control-label\" for=\"pgr5\">Semestre </label>
+                                    <label class=\"custom-control-label\" for=\"pgr5\">Semestre (educación superior)</label>
                                     <select class=\"col-2 ml-4\" name=\"semestre\" id=\"boton\"  style=\"display:none\">
                                         <option>1</option>
                                         <option>2</option>
@@ -469,37 +470,37 @@
                             "<div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr1\" name=\"grado\" class=\"custom-control-input\"
                                 value=\"6\" onChange=\"habilitarSemstre();\">
-                                <label class=\"custom-control-label\" for=\"pgr1\">6°</label>
+                                <label class=\"custom-control-label\" for=\"pgr1\">6° de secundaria</label>
                             </div>
                             <div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr2\" name=\"grado\" class=\"custom-control-input\"
                                 value=\"7\" onChange=\"habilitarSemstre();\">
-                                <label class=\"custom-control-label\" for=\"pgr2\">7°</label>
+                                <label class=\"custom-control-label\" for=\"pgr2\">7° de secundaria</label>
                             </div>
                             <div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr3\" name=\"grado\" class=\"custom-control-input\"
                                 value=\"8\" onChange=\"habilitarSemstre();\">
-                                <label class=\"custom-control-label\" for=\"pgr3\">8°</label>
+                                <label class=\"custom-control-label\" for=\"pgr3\">8° de secundaria</label>
                             </div>
                             <div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr4\" name=\"grado\" class=\"custom-control-input\"
                                 value=\"9\" onChange=\"habilitarSemstre();\">
-                                <label class=\"custom-control-label\" for=\"pgr4\">9°</label>
+                                <label class=\"custom-control-label\" for=\"pgr4\">9° de secundaria</label>
                             </div>
                             <div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr6\" name=\"grado\" class=\"custom-control-input\"
                                 value=\"10\" onChange=\"habilitarSemstre();\">
-                                <label class=\"custom-control-label\" for=\"pgr6\">10°</label>
+                                <label class=\"custom-control-label\" for=\"pgr6\">10° de secundaria</label>
                             </div>
                             <div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr7\" name=\"grado\" class=\"custom-control-input\"
                                 value=\"11\" onChange=\"habilitarSemstre();\">
-                                <label class=\"custom-control-label\" for=\"pgr7\">11°</label>
+                                <label class=\"custom-control-label\" for=\"pgr7\">11° de secundaria</label>
                             </div>
                             <div class=\"mb-2 custom-radio custom-control\">
                                 <input type=\"radio\" id=\"pgr5\" name=\"grado\" class=\"custom-control-input\"
                                 value=\"S\" onChange=\"habilitarSemstre();\" >
-                                <label class=\"custom-control-label\" for=\"pgr5\">Semestre </label>
+                                <label class=\"custom-control-label\" for=\"pgr5\">Semestre (educación superior) </label>
                                 <select class=\"col-2 ml-4\" name=\"semestre\" id=\"boton\"  style=\"display:none\">
                                     <option>1</option>
                                     <option>2</option>
