@@ -154,7 +154,7 @@
         '<h4 class="small">
             '.$labelP.' 
             <span class="float-right font-weight-bold">
-                '.round($porcentaje,3).'%
+                '.round($porcentaje,2).'%
             </span>
         </h4>
         <div class="progress mb-4">
@@ -288,9 +288,14 @@
                             <?php
                                 $total_ed = count($labelsEdad);
                                 $colors_arr = array('#4325CC', '#D6D0C9','#2C1982', '#BF7398','#FC890D', '#33C41A');
+                                $cont_Ed = 0;
                                 for ($i =0 ; $i<$total_ed; $i++)
                                 {
-                                    genPorcentBarDescription($labelsEdad[$i],($valsEdad[$i]/$total_ed)*100,$valsEdad[$i],$colors_arr[$i]);
+                                    $cont_Ed += $valsEdad[$i];
+                                }
+                                for ($i =0 ; $i<$total_ed; $i++)
+                                {
+                                    genPorcentBarDescription($labelsEdad[$i],($valsEdad[$i]/$cont_Ed)*100,$valsEdad[$i],$colors_arr[$i]);
                                 }
                                 unset($colors_arr);
                             ?>
@@ -318,6 +323,7 @@
                         <div class="col-6 align-self-center" >
                             <?php
                                 $total_gr = count($labelsGrado);
+                                
                                 $colors_arr = array('#4325CC', '#D17D24','#1B0C5E', 
                                 '#F564DA','#53F736', '#584A96',
                                 '#D49A5D','#184710', '#D67E20',
