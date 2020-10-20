@@ -2,7 +2,7 @@
     require "controller/connection.php";
 
     // consult the institutes
-    $instituteOptions =  $mysqli->query("SELECT isntitucion FROM `quiz_general` WHERE isntitucion != 'Ninguna';");
+    $instituteOptions =  $mysqli->query("SELECT DISTINCT(isntitucion) FROM `quiz_general` WHERE isntitucion != 'Ninguna';");
 
 
     //filtrer option
