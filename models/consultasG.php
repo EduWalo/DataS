@@ -337,7 +337,7 @@
                                 }
                                 for ($i =0 ; $i<$total_gr; $i++)
                                 {
-                                    genPorcentBarDescription($labelsGrado[$i]."°",($valsGrado[$i]/$total_gr)*100,$valsGrado[$i],$colors_arr[$i]);
+                                    genPorcentBarDescription($labelsGrado[$i]."°",($valsGrado[$i]/$cont_Gr)*100,$valsGrado[$i],$colors_arr[$i]);
                                 }
                                 unset($colors_arr);
                             ?>
