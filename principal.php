@@ -48,14 +48,17 @@
     }else {
         $tpTestOption = true; // abiable general test
     }
+    
 
-    if((($genTestOption && $lstTestOption) && $tpTestOption)&& $type_user == 0){
-        //modal 
+    if((($genTestOption && $lstTestOption) 
+        && $tpTestOption)
+        && ($type_user == 0 && ($_SESSION["acept_terms"] || ! isset($_GET["action"])))){
+
         $modalLaunch = true;
     }else {
         $modalLaunch = false;
     }
-
+    
     
 ?>
 
@@ -82,22 +85,37 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <!-- <script src="assets/demo/chart-area-demo.js"></script> -->
-        <!-- <script src="assets/demo/chart-bar-demo.js"></script> -->
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script> -->
         <script src="assets/demo/datatables-demo.js"></script>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
         <script src="js/spanishDatatables.js"></script>
         <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap.min.css">
     
+
+
+
+
+
+
+
+
+
         
 
     </head>
@@ -115,7 +133,7 @@
 
             
             <!-- Navbar-->
-            <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0" ">
+            <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0" >
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
@@ -205,6 +223,10 @@
                                     <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
                                     Consulta especifica  
                                 </a>
+                                <a class="nav-link" href="principal.php?action=exportsF">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-file-export"></i></div>
+                                    Exportar
+                                </a>
                                 
 
                             <?php  }?>
@@ -231,34 +253,54 @@
             <div id="layoutSidenav_content" >
                 <!-- contenido -->
                 <main>
-                    <div class="container-fluid " style="background-color: #EEF1F9">
+                    <div id="containerMain" class="container-fluid " style="background-color: #EEF1F9">
 
+
+
+                    
                         <?php  if($modalLaunch){ ?>
                            
                             <!-- Modal -->
                             <div class="modal fade " id="modalCondition"   role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
+                                <div class="modal-dialog" role="document" id="appd">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Terminos y condiciones</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Información importante</h5>
+                                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
-                                            </button>
+                                            </button> -->
                                         </div>
                                         <div class="modal-body">
-                                            Por favor diligencie los siguientes formularios. La información recopilada a través de este formulario está enmarcada bajo el cumplimiento de la Ley Estatutaria 1581 de 2012 y será utilizada solo con fines académicos para analizar dentro del desarrollo de una propuesta de investigación doctoral dentro de la Universidad del Valle. 
-                                            En caso de tener alguna duda o solicitud puntual por favor enviar un correo a: 
-                                            <a href="mailto:yuri.bermudez@correounivalle.edu.co?Subject=Consulta%20de%20plataforma "> yuri.bermudez@correounivalle.edu.co  </a>
+                                            <p>
+                                                Por favor diligencie el siguiente formulario. La información recopilada a través de este formulario está enmarcada dentro del desarrollo de una propuesta de investigación doctoral de un estudiante de doctorado en Ingeniería de la Universidad del Valle y será utilizada únicamente con fines académicos.
+                                            </p>
+                                            <p>
+                                                En caso de tener alguna duda o solicitud puntual por favor enviar un correo a: <a href="mailto:yuri.bermudez@correounivalle.edu.co">yuri.bermudez@correounivalle.edu.co </a>  
+                                            </p>
+                                            <!-- En cumplimiento a nuestro deber de informar tal como lo dispone la Ley 1518 de 2012, la Universidad del Valle a través del programa de doctorado en Ingeniería énfasis en Ciencias de la computación, le comunica que los datos personales suministrados mediante el presente formulario serán utilizados como parte del desarrollo de un trabajo de investigación doctoral de un estudiante de doctorado en Ingeniería de la Universidad del Valle y serán utilizados únicamente con fines académicos y tratados conforme la política de protección de datos personales (Resolución de Rectoría 3.524 de 2019)  publicada en la página web: 
+                                            <a href="http://www.univalle.edu.co/">http://www.univalle.edu.co/</a> -->
                                         </div>
                                         <div class="modal-footer">
                                             <a type="button" class="btn btn-secondary" href="logout.php">No aceptar</a>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="aceptChanges()">Aceptar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <script>
-                                $('#modalCondition').modal('show');
+                            <script>    
+                                // $('#modalCondition').modal('show');
+                                $('#modalCondition').modal({
+                                    backdrop: false,
+                                    show: true,
+                                    keyboard: false
+                                });
+                                function aceptChanges(){
+                                    <?php
+                                       $_SESSION["acept_terms"] = false;
+                                        ?>
+                                    
+                                }
+
                             </script>
                         <?php } ?>
                         
@@ -276,7 +318,7 @@
                 <footer class="py-3 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted"> Data student 2020</div>
+                            <div class="text-muted"> Copyright &copy; Gamifytest 2020</div>
                             
                         </div>
                     </div>

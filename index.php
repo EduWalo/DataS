@@ -34,6 +34,7 @@
                 $_SESSION['mail']= $row['mail'];
                 $_SESSION['username']= $row['username'];
                 $_SESSION['type_user']= $row['type_user'];
+                $_SESSION['acept_terms'] = true;
 
                 // session init
                 header("Location: principal.php");
@@ -117,7 +118,8 @@
                                             ?>
                                             
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.php">¿Olvido su contraseña?</a>
+                                                <a href=""></a>
+                                                <!-- <a class="small" href="password.php">¿Olvido su contraseña?</a> -->
                                                 <!-- <a class="btn btn-primary"href="index.html">Ingresar</a> -->
                                                 <button type="submit" class="btn btn-primary" >Ingresar</a>
                                                 
@@ -137,7 +139,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Data Student 2020</div>
+                            <div class="text-muted">Copyright &copy; Gamifytest 2020</div>
                             
                         </div>
                     </div>

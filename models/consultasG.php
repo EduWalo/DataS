@@ -30,7 +30,8 @@
     if($generoAll[0][0] != 0){
         $p_genero_m = (($generoM[0])[0]/($generoAll[0])[0])*100;
         $p_genero_f = (($generoF[0])[0]/($generoAll[0])[0])*100;
-        $p_genero_otr = ((($generoAll[0])[0] - (($generoF[0])[0]+($generoM[0])[0]))/($generoAll[0])[0])*100;
+        $generoOTR = (($generoAll[0])[0] - (($generoF[0])[0]+($generoM[0])[0]));
+        $p_genero_otr = ($generoOTR/($generoAll[0])[0])*100;
     }else {
         $p_genero_m = 0;
         $p_genero_f = 0;
@@ -147,6 +148,25 @@
 
     }
 
+    function genPorcentBarDescription($labelP,$porcentaje,$val,$bg)
+    {
+        echo 
+        '<h4 class="small">
+            '.$labelP.' 
+            <span class="float-right font-weight-bold">
+                '.round($porcentaje,3).'%
+            </span>
+        </h4>
+        <div class="progress mb-4">
+            <div class="progress-bar';
+        echo '" role="progressbar" style="width: '. $porcentaje.'%; background-color: '.$bg.'" 
+                aria-valuenow="'.round($porcentaje,2).'" aria-valuemin="0" aria-valuemax="100">
+                '.$val.'
+            </div>
+        </div>';
+
+    }
+
     if(isset($_POST["institutionFilter"])){
         if($_POST["institutionFilter"] == 'Ninguna'){
             $selectNinguna = true;
@@ -166,15 +186,15 @@
 
 <!-- formulario de control y filtros-->
 <div class="row">
+
+    
     <script>
-	$(document).ready(function() {
-	  $('#institution').on('change', function() {
-		 document.formInstTable.submit();
-	  });
-	});
+        function getValSelect(){
+            $("#FconsultaGen_id").submit();
+        }
     </script>
     <!-- fistros -->
-    <form name="FconsultaGen" action="<?php echo "?action=consultasG"?>"  method="POST" >
+    <form id="FconsultaGen_id" name="FconsultaGen" action="<?php echo "?action=consultasG"?>"  method="POST" >
         <div class="form-group">
             <div class="card mb-4 " >
                 <div class="d-flex card-header">
@@ -182,7 +202,7 @@
                         <label >Filtro de institución</label>        
                     </div>
                     <div class=" p-2">
-                        <select id="institution" class="form-control" name="institutionFilter">
+                        <select id="institution" class="form-control" name="institutionFilter" onchange="getValSelect()">
                             <option value="Todas">Todas</option>
                             <?php if($selectNinguna){?>
                                     <option value="Ninguna" selected >Ninguna</option>
@@ -191,7 +211,7 @@
                             <?php } ?>
                             
                             <?php
-                                for ($i=0; $i < $instituteOptions; $i++) { 
+                                for ($i=0; $i < $instituteOptions->num_rows; $i++) { 
                                     //get data
                                     $instituto = $instituteOptions->fetch_assoc();
                                     //set option
@@ -221,145 +241,187 @@
 
 
 </div>
-
-<div class="row">
-    <!-- pie  -->
-    <div class="col-xl-4 col-lg-5">
-        <div class="card shadow mb-4">
-            <!-- header -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">
-                    Proporción en género
-                </h6>
-            </div>
-            <!-- body -->
-            <div class="card-body">
-                <div class="chart-pie pt-4 pb-2">
-                    <canvas id="pyegenero" width="419" height="183" class="chartjs-render-monitor" style="display: block; width: 559px; height: 245px;"></canvas>
+<div id="contenido">
+    <div class="row">
+        <!-- pie  -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        Proporción en género
+                    </h6>
+                </div>
+                <!-- body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col chart-pie pt-4 pb-2">
+                            <canvas id="pyegenero" width="419" height="183" class="chartjs-render-monitor" style="display: block; width: 559px; height: 245px;"></canvas>
+                        </div>
+                        <!-- specific mo -->
+                        <div class="col-5 align-self-center">
+                            <?php genPorcentBarDescription("Femenino ",$p_genero_f,($generoF[0])[0],"#4e73df")?>
+                            <?php genPorcentBarDescription("Masculino ",$p_genero_m,($generoM[0])[0],"#1cc88a")?>
+                            <?php genPorcentBarDescription("Otros ",$p_genero_otr,$generoOTR,"#36b9cc")?>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- RANGO EDADES -->
-    <div class="col-xl-4 col-lg-5">
-        <div class="card shadow mb-4">
-            <!-- header -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">
-                    Proporción en rangos de edades
-                </h6>
-            </div>
-            <!-- body -->
-            <div class="card-body">
-                <div class="chart-pie pt-4 pb-2">
-                    <canvas id="pyedades" width="419" height="183" class="chartjs-render-monitor" style="display: block; width: 559px; height: 245px;"></canvas>
+        <!-- RANGO EDADES -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        Proporción en rangos de edades
+                    </h6>
+                </div>
+                <!-- body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col chart-pie pt-4 pb-2">
+                            <canvas id="pyedades" width="419" height="183" class="chartjs-render-monitor" style="display: block; width: 559px; height: 245px;"></canvas>
+                        </div>
+                        <div class="col-5 align-self-center" >
+                            <?php
+                                $total_ed = count($labelsEdad);
+                                $colors_arr = array('#4325CC', '#D6D0C9','#2C1982', '#BF7398','#FC890D', '#33C41A');
+                                for ($i =0 ; $i<$total_ed; $i++)
+                                {
+                                    genPorcentBarDescription($labelsEdad[$i],($valsEdad[$i]/$total_ed)*100,$valsEdad[$i],$colors_arr[$i]);
+                                }
+                                unset($colors_arr);
+                            ?>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- GRADO RATE -->
-    <div class="col-xl-4 col-lg-5">
-        <div class="card shadow mb-4">
-            <!-- header -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">
-                    Proporción de grado
-                </h6>
-            </div>
-            <!-- body -->
-            <div class="card-body">
-                <div class="chart-pie pt-4 pb-2">
-                    <canvas id="pyegrado" width="419" height="183" class="chartjs-render-monitor" style="display: block; width: 559px; height: 245px;"></canvas>
+        <!-- GRADO RATE -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        Proporción de grado
+                    </h6>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- bar reds -->
-    <div class="col-xl-8 ">
-        <div class="card shadow mb-4">
-            <!-- header -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">
-                    Uso de plataformas 
-                </h6>
-            </div>
-            <!-- body -->
-            <div class="card-body">
-                <div class="chart-bar ">
-                    <canvas id="plataformRate" width="446" height="160" class="chartjs-render-monitor" style="display: block; width: 446px; height: 160px;"></canvas>
+                <!-- body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col chart-pie pt-4 pb-2">
+                            <canvas id="pyegrado" width="600" height="200" class="chartjs-render-monitor" style="display: block; width: 559px; height: 245px;"></canvas>
+                        </div>    
+                        <div class="col-6 align-self-center" >
+                            <?php
+                                $total_gr = count($labelsGrado);
+                                $colors_arr = array('#4325CC', '#D17D24','#1B0C5E', 
+                                '#F564DA','#53F736', '#584A96',
+                                '#D49A5D','#184710', '#D67E20',
+                                '#2E961B','#851770', '#21B59F',
+                                '#080126','#482FBA', '#B06617',
+                                '#754108','#8C0774', '#BF8F5C');
+                                for ($i =0 ; $i<$total_ed; $i++)
+                                {
+                                    genPorcentBarDescription($labelsGrado[$i]."°",($valsGrado[$i]/$total_gr)*100,$valsGrado[$i],$colors_arr[$i]);
+                                }
+                                unset($colors_arr);
+                            ?>
+                            
+                        </div>
+                    </div>
                     
                 </div>
             </div>
-
         </div>
-    </div>    
-</div>
-
-<!-- selections  -->
-<div class="row">
-    <!-- tipos de jugador  -->
-    <div class="col-xxl-4 col-xl-6 mb-4">
-        <div class="card card-header-actions h-100">
-            <div class="card-header">
-                Perfiles de jugadores
-            </div>
-            <div class="card-body">
-
-                <?php genPorcentBar("Filantropo ",$type_player_rate["ph"])?>
-                <?php genPorcentBar("Socializador ",$type_player_rate["so"])?>
-                <?php genPorcentBar("Espiritu libre",$type_player_rate["fr"])?>
-                <?php genPorcentBar("Triunfador ",$type_player_rate["ar"])?>
-                <?php genPorcentBar("Jugador ",$type_player_rate["pl"])?>
-                <?php genPorcentBar("Disruptor ",$type_player_rate["di"])?>
+        <!-- bar reds -->
+        <div class="col-xl-8 ">
+            <div class="card shadow mb-4">
+                <!-- header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        Uso de plataformas 
+                    </h6>
+                </div>
+                <!-- body -->
+                <div class="card-body">
+                    <div class="chart-bar ">
+                        <canvas id="plataformRate" width="446" height="160" class="chartjs-render-monitor" style="display: block; width: 446px; height: 160px;"></canvas>
+                        
+                    </div>
+                </div>
 
             </div>
-
-        </div>
+        </div>    
     </div>
 
-    <div class="col-xl-6 col-lg-5 ">
-        <div class="card shadow mb-4">
-            <!-- header -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">
-                    Porcentaje de participación en Tipos de jugador
-                </h6>
+    <!-- selections  -->
+    <div class="row">
+        <!-- tipos de jugador  -->
+        <div class="col-xxl-4 col-xl-6 mb-4">
+            <div class="card card-header-actions h-100">
+                <div class="card-header">
+                    Perfiles de jugadores
+                </div>
+                <div class="card-body">
+
+                    <?php genPorcentBar("Filantropo ",$type_player_rate["ph"])?>
+                    <?php genPorcentBar("Socializador ",$type_player_rate["so"])?>
+                    <?php genPorcentBar("Espiritu libre",$type_player_rate["fr"])?>
+                    <?php genPorcentBar("Triunfador ",$type_player_rate["ar"])?>
+                    <?php genPorcentBar("Jugador ",$type_player_rate["pl"])?>
+                    <?php genPorcentBar("Disruptor ",$type_player_rate["di"])?>
+
+                </div>
+
             </div>
-            <!-- body -->
-            <div class="card-body">
-                <div class="polar-chart pt-4 pb-2">
-                    <canvas id="pyeTp" class="chartjs-render-monitor" 
-                    style="display: block; width: 559px; height: 340px;"></canvas>
+        </div>
+
+        <div class="col-xl-6 col-lg-5 ">
+            <div class="card shadow mb-4">
+                <!-- header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        Porcentaje de participación en Tipos de jugador
+                    </h6>
+                </div>
+                <!-- body -->
+                <div class="card-body">
+                    <div class="polar-chart pt-4 pb-2">
+                        <canvas id="pyeTp" class="chartjs-render-monitor" 
+                        style="display: block; width: 559px; height: 340px;"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-     <!-- bar reds -->
-     <div class="col-xl-8 ">
-        <div class="card shadow mb-4">
-            <!-- header -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">
-                Distribución de Estilos de aprendizaje 
-                </h6>
-            </div>
-            <!-- body -->
-            <div class="card-body">
-                <div class="chart-bar ">
-                    <canvas id="chPercepcion" width="446" height="160" class="chartjs-render-monitor" style="display: block; width: 446px; height: 160px;"></canvas>
-                    <canvas id="chCanal" width="446" height="160" class="chartjs-render-monitor" style="display: block; width: 446px; height: 160px;"></canvas>
-                    <canvas id="chProceso" width="446" height="160" class="chartjs-render-monitor" style="display: block; width: 446px; height: 160px;"></canvas>
-                    <canvas id="chEntendimiento" width="446" height="160" class="chartjs-render-monitor" style="display: block; width: 446px; height: 160px;"></canvas>
+        <!-- bar reds -->
+        <div class="col-xl-8 ">
+            <div class="card shadow mb-4">
+                <!-- header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                    Distribución de Estilos de aprendizaje 
+                    </h6>
+                </div>
+                <!-- body -->
+                <div class="card-body">
+                    <div class="chart-bar ">
+                        <canvas id="chPercepcion" width="446" height="160" class="chartjs-render-monitor" style="display: block; width: 446px; height: 160px;"></canvas>
+                        <canvas id="chCanal" width="446" height="160" class="chartjs-render-monitor" style="display: block; width: 446px; height: 160px;"></canvas>
+                        <canvas id="chProceso" width="446" height="160" class="chartjs-render-monitor" style="display: block; width: 446px; height: 160px;"></canvas>
+                        <canvas id="chEntendimiento" width="446" height="160" class="chartjs-render-monitor" style="display: block; width: 446px; height: 160px;"></canvas>
+                    </div>
                 </div>
             </div>
-
-        </div>
-    </div>  
-
-
+        </div>  
+    </div>
 </div>
+    
 
 
 
@@ -372,7 +434,7 @@
             labels: ["Femenino", "Masculino", "Otros"],
             datasets: [{
             data: [
-                '<?php echo round( $p_genero_f,3)?>' ,
+                '<?php echo round($p_genero_f,3)?>' ,
                 '<?php echo round($p_genero_m,3)?>' ,
                 '<?php echo round($p_genero_otr,3)?>' ,
             ],
@@ -395,7 +457,7 @@
             },
             
             legend: {
-                display: true,
+                display: false,
                 position: 'bottom',
                 labels:{
                     boxWidth: 10,
@@ -405,7 +467,7 @@
                     alert(val);
                 }
             },
-            cutoutPercentage: 80,
+            
         }
     });
 </script>
@@ -519,7 +581,7 @@
                 caretPadding: 10,
             },
             legend: {
-                display: true,
+                display: false,
                 position: 'bottom',
                 labels:{
                     boxWidth: 10,
@@ -560,7 +622,7 @@
                 caretPadding: 10,
             },
             legend: {
-                display: true,
+                display: false,
                 position: 'bottom',
                 labels:{
                     boxWidth: 10,

@@ -7,7 +7,7 @@
     if($_POST){
         //post validate
         $post = (isset($_POST['user']) && !empty($_POST['user'])) &&
-        // (isset($_POST['email']) && !empty($_POST['email'])) &&
+        (isset($_POST['email']) && !empty($_POST['email'])) &&
         (isset($_POST['password']) && !empty($_POST['password'])) &&
         (isset($_POST['password_conf']) && !empty($_POST['password_conf']));
 
@@ -18,29 +18,25 @@
         
                 // load data of form 
                 $usuario = $_POST['user'];
-                // $email = $_POST['email'];
+                $email = $_POST['email'];
                 $password = $_POST['password'];
                 // query probe
                 $sqluser = "SELECT * FROM client WHERE username='$usuario'";
-                // $sqlemail = "SELECT * FROM client WHERE mail='$email'";
+                $sqlemail = "SELECT * FROM client WHERE mail='$email'";
                 
                 // execute query to prevent variuis same users
                 $num_user = ($mysqli->query($sqluser))->num_rows;
-                // $num_email = ($mysqli->query($sqlemail))->num_rows;
+                $num_email = ($mysqli->query($sqlemail))->num_rows;
         
                 if($num_user>0){
                     $error = 2;//user error,yet exist
-                }
-                // else if($num_email>0){
-                //     $error = 3;//mail error, yet exist
-                // }
-                else  {
+                }else if($num_email>0){
+                    $error = 3;//mail error, yet exist
+                }else  {
                     
                     //el usuario no ha sido registrado
-                    // $sql = "INSERT INTO client (username, passwrd, mail, type_user)
-                    //         VALUES ('$usuario', '$password', '$email', 0)";
-                    $sql = "INSERT INTO client (username, passwrd, type_user)
-                            VALUES ('$usuario', '$password', 0)";
+                    $sql = "INSERT INTO client (username, passwrd, mail, type_user)
+                            VALUES ('$usuario', '$password', '$email', 0)";
                     if($mysqli->query($sql)){
                         echo '<div class="alertB success">',
                         "<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
@@ -104,7 +100,7 @@
                                                 <input class="form-control py-4" id="inputFirstName" 
                                                 name="user"
                                                 type="text" placeholder="Ingresa el nombre del usuario"
-                                                value="<?php if (isset($_POST['user'])) {echo $_POST['user'] ;}?>"
+                                                value="<?php if (isset($_POST['user'])) echo $_POST['user'] ;?>"
                                                 />
                                             </div>
                                             <?php
@@ -116,6 +112,24 @@
                                             }
                                             ?>
                                             
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                                <input class="form-control py-4" id="inputEmailAddress" 
+                                                name="email"
+                                                type="email" aria-describedby="emailHelp" 
+                                                placeholder="Ingrese su correo electronico"
+                                                value="<?php if (isset($_POST['email'])) echo $_POST['email'] ;?>"
+                                                />
+                                            </div>
+                                            
+                                            <?php
+                                            if($error == 3){
+                                                echo '<div class="alert">',
+                                                "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
+                                                '<strong>¡Error!</strong> Este correo ya se encuentra en uso',
+                                                '</div>';
+                                            }
+                                            ?>
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -167,7 +181,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Gamifytest 2020</div>
+                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
                            
                         </div>
                     </div>

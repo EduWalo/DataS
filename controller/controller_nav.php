@@ -24,6 +24,8 @@ class MVController{
 				$contenido = "models/consultasG.php";
 			}else if($linkeded=="consultasE"){
 				$contenido = "models/consultasE.php";
+			}else if($linkeded=="exportsF"){
+				$contenido = "models/export.php";
 			}
 			else {
 				echo "
