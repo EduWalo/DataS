@@ -330,6 +330,11 @@
                                 '#2E961B','#851770', '#21B59F',
                                 '#080126','#482FBA', '#B06617',
                                 '#754108','#8C0774', '#BF8F5C');
+
+                                $cont_Gr =0;
+                                for ($i =0 ; $i<$total_gr; $i++){
+                                    $cont_Gr += $valsGrado[$i];
+                                }
                                 for ($i =0 ; $i<$total_gr; $i++)
                                 {
                                     genPorcentBarDescription($labelsGrado[$i]."°",($valsGrado[$i]/$total_gr)*100,$valsGrado[$i],$colors_arr[$i]);
