@@ -238,13 +238,13 @@ INNER JOIN `quiz_type_players_rs` ON `client`.`id_student` = `quiz_type_players_
                         <td><?php echo $usr["isntitucion"]?></td>
                         <td><?php echo $usr["grado"]?></td>
                         <td><?php echo $usr["r_edad"]?></td>
-                        <td><?php echo $usr["perception"]?></td>
+                        <td><?php echo getLabel("perception", $usr["perception"]);?></td>
                         <td><?php echo $usr["perception_val"]?></td>
-                        <td><?php echo $usr["input"]?></td>
+                        <td><?php echo getLabel("input", $usr["input"]);?></td>
                         <td><?php echo $usr["input_val"]?></td>
-                        <td><?php echo $usr["processes"]?></td>
+                        <td><?php echo getLabel("processes", $usr["processes"]);?></td>
                         <td><?php echo $usr["processes_val"]?></td>
-                        <td><?php echo $usr["understand"]?></td>
+                        <td><?php echo getLabel("understand", $usr["understand"]);?></td>
                         <td><?php echo $usr["understand_val"]?></td>
                         <td><?php echo $usr["philanthrop"]?></td>
                         <td><?php echo $usr["socialiser"]?></td>
