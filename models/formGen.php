@@ -294,7 +294,7 @@
             <!-- GRADO -->
             <div class="card mb-2">
                 <div class="card-header">
-                    <h5 class="card-title">Grado o semestre de pregrado segun corresponda que curse actualemente</h5>
+                    <h5 class="card-title">Grado o semestre de pregrado segun corresponda que curse actualmente</h5>
                     <h6 class="text-muted font-italic"> Nota: seleccione de 6° a 11° si corresponde a educación secundaria o la opción de semestre indicando el actualmente cursado si se encuentra en educación superior.</h6>
                 </div>
                 <div class="card-body" >

@@ -124,7 +124,7 @@
         '<h4 class="small">
             '.$labelP.' 
             <span class="float-right font-weight-bold">
-                '.round($porcentaje,3).'%
+                '.round($porcentaje,2).'%
             </span>
         </h4>
         <div class="progress mb-4">
@@ -416,7 +416,7 @@
                 <!-- header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">
-                    Distribución de Estilos de aprendizaje 
+                    Distribución de estilos de aprendizaje 
                     </h6>
                 </div>
                 <!-- body -->
@@ -949,7 +949,7 @@
     new Chart(document.getElementById("chEntendimiento"),{
         type: "horizontalBar",  
         data: {
-            labels: ["Global","Estructural"],
+            labels: ["Global","Secuencial"],
             datasets: [{
                 label: "Entendimiento",
                 backgroundColor: ["#FF9900","#424242"],
