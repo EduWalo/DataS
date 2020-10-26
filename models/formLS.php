@@ -218,13 +218,13 @@
 					<?php
 						$fg->generateTwoOptions(
 							'12. Cuando resuelvo problemas de matemáticas:',
-							'Generalmente trabajo sobre soluciones con un paso a la vezmágenes.',
-							'Frecuentemente sé cuales son las soluciones, pero luego tengo dificultad para imaginarme los pasos para llegar a ellas.',
+							'Por lo general llego a soluciones paso por paso.',
+							'A menudo llego a las soluciones rápidamente, pero luego tengo que batallar para averiguar los pasos que me llevaron a las soluciones.',
 							12);
 						$fg->generateTwoOptions(
-							'13. En las clases a las que has asistido, la relación con los otros estudiantes le permite saber: ',
-							'Cómo es la actitud de muchos de los compañeros.',
-							'Cómo es la actitud de algunos pocos compañeros.',
+							'13. En las clases que he tomado: ',
+							'Por lo general he llegado a conocer a muchos de los estudiantes.',
+							'Pocas veces he llegado a conocer a muchos de los estudiantes.',
 							13);
 						$fg->generateTwoOptions(
 							'14. Cuando leo temas que no son de ficción, prefiero:',
@@ -269,7 +269,7 @@
 							'Individual (apartado de los grupos de estudio).',
 							21);
 						$fg->generateTwoOptions(
-							'22. Me considero una persona:',
+							'22. Prefiero que se me considere:',
 							'Cuidados@ en los detalles al realizar mi trabajo.',
 							'Creativ@ en la manera en la que realizo mi trabajo.',
 							22);
@@ -288,7 +288,7 @@
 							'Con pausas y reinicios, me llego a confundir muchas veces pero de un momento a otro lo entiendo.',
 							24);
 						$fg->generateTwoOptions(
-							'25. Prefiero primero:',
+							'25. Ante una nueva tarea, prefiero:',
 							'Hacer algo y ver que sucede luego.',
 							'Pensar como voy a hacer algo antes de actuar.',
 							25);
