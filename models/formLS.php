@@ -259,7 +259,7 @@
 							'Las cosas que oigo.',
 							19);
 						$fg->generateTwoOptions(
-							'20. Lo más importante para mí que un docente/tutor:',
+							'20. Lo más importante para mí de un docente/tutor es quex:',
 							'Exponga el material en pasos secuenciales y claros.',
 							'Me dé un panorama general y relacione el material con otros temas.',
 							20);
