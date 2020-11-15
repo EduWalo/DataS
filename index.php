@@ -11,6 +11,10 @@
         // load data of form 
         $usuario = $_POST['user'];
         $password = $_POST['password'];
+
+//Modificado MD5 ppbm 3-11-2020. 10:00:00
+	$passwordmd5=MD5($password);
+
         // query
         // $sql = "SELECT id, username, passwrd, mail, type_user FROM client WHERE username='$usuario'";;
         $sql = "SELECT * FROM client WHERE username='$usuario'";;
@@ -26,8 +30,11 @@
             $row = $resultado->fetch_assoc();
             //db password
             $password_bd = $row['passwrd'];
+
+//Modificado MD5 ppbm 3-11-2020. 10:00:00
             
-            if($password_bd == $password){
+            //if($password_bd == $password){
+	    if($password_bd == $passwordmd5){
 
                 // session
                 $_SESSION['id']= $row['id_student'];

@@ -39,8 +39,14 @@
                     //el usuario no ha sido registrado
                     // $sql = "INSERT INTO client (username, passwrd, mail, type_user)
                     //         VALUES ('$usuario', '$password', '$email', 0)";
+
+//Modificado MD5 ppbm 3-11-2020. 10:00:00
+	$passwordmd5=MD5($password);
+
                     $sql = "INSERT INTO client (username, passwrd, type_user)
-                            VALUES ('$usuario', '$password', 0)";
+                            VALUES ('$usuario', '$passwordmd5', 0)";
+
+
                     if($mysqli->query($sql)){
                         echo '<div class="alertB success">',
                         "<span class=\"closebtnB\" onclick=\"this.parentElement.style.display='none';\">&times;</span> ",
