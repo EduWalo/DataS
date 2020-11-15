@@ -23,6 +23,14 @@
     }else {
         $showForm=true; 
         if($_POST){
+		// evitar que el estudiante selecciones al opciopn de ninguno
+		$noNnOption = true;
+
+		if(isset($_POST["pginstitute"])){
+                    if($_POST["pginstitute"] == "Ninguna" ){
+                        $noNnOption = false;
+                    }
+	        }
 
             if(
                 isset($_POST["pgenero"]) &&
@@ -176,15 +184,9 @@
                     <h6 class="text-muted font-italic"> Seleccione la opción suministrada por el docente, en caso de no pertenecer a una institución, opte por la opción de 'Ninguna'. </h6>
                 </div>        
                 <div class="card-body" >
-                    <?php
-                        if(isset($_POST["pginstitute"])){
-                            if($_POST["pginstitute"] === "Femenino"){
-                            }
-                        }
-                        
-                    ?>
+
                     <select class="col-8 " name="pginstitute" id="pginstitute">
-                        <option value="Ninguna">Ninguna</option>
+                        <option value="Ninguna">--</option>
                         <?php
                             for ($i=0; $i < $instituntes_res->num_rows; $i++) { 
                                 //get data
