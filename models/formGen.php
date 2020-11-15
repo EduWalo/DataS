@@ -33,6 +33,7 @@
 	        }
 
             if(
+		$noNnOption &&
                 isset($_POST["pgenero"]) &&
                 isset($_POST["grado"]) &&
                 isset($_POST["edad"]) &&
