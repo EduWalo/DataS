@@ -24,8 +24,8 @@
     
     
     $generoAll = ($mysqli->query("SELECT COUNT(genero) FROM `quiz_general` $whereOption ; "))->fetch_all();
-    $generoM = ($mysqli->query("SELECT COUNT(genero) FROM `quiz_general` WHERE genero = 'Masculino' $whereandOption ;"))->fetch_array();
-    $generoF = ($mysqli->query("SELECT COUNT(genero) FROM `quiz_general` WHERE genero = 'Femenino' $whereandOption  ;"))->fetch_array();
+    $generoM = ($mysqli->query("SELECT COUNT(genero) FROM `quiz_general` WHERE genero = 'Masculino' $whereandOption ;"))->fetch_all();
+    $generoF = ($mysqli->query("SELECT COUNT(genero) FROM `quiz_general` WHERE genero = 'Femenino' $whereandOption  ;"))->fetch_all();
 
     var_dump($generoM);
     echo "  ";
