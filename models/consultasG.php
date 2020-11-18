@@ -28,7 +28,9 @@
     $generoF = ($mysqli->query("SELECT COUNT(genero) FROM `quiz_general` WHERE genero = 'Femenino' $whereandOption  ;"))->fetch_all();
 
     var_dump($generoM);
+    echo "  "
     var_dump($generoF);
+    echo "  "
     var_dump($generoALL);
 
     if($generoAll[0][0] != 0){
